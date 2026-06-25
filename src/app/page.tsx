@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { basePath } from "@/lib/basePath";
+import { ProductCardGrid } from "@/components/ProductCardGrid";
 
 const solutions = [
   {
@@ -214,78 +214,14 @@ export default function HomePage() {
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">Explore our complete range of energy storage systems</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            {products.map((p, i) => (
-              <div key={i} className="product-card group cursor-pointer animate-fade-in-up" style={{ animationDelay: `${i * 0.12}s` }}>
-                <div className={`relative h-52 bg-gradient-to-br ${p.gradient} overflow-hidden`}>
-                  <Link href={`/products/${p.slug}`}>
-                    <Image
-                      src={p.images[0]}
-                      alt={p.name}
-                      fill
-                      className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    />
-                  </Link>
-                  <span className="absolute top-3 left-3 z-10 inline-flex items-center rounded-md px-2.5 py-1 font-medium text-xs bg-[#1447E6] text-white shadow-md">
-                    {p.category}
-                  </span>
-                  <Link
-                    href={`/products/${p.slug}`}
-                    className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white hover:scale-110"
-                    aria-label={`View ${p.name} details`}
-                  >
-                    <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                      <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/>
-                      <circle cx="12" cy="12" r="3"/>
-                    </svg>
-                  </Link>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent" />
-                </div>
-
-                <div className="p-5 flex flex-col flex-1">
-                  <h3 className="font-bold text-gray-900 mb-1 group-hover:text-[#1447E6] transition-colors text-lg leading-snug">{p.name}</h3>
-                  <p className="text-sm text-gray-500 mb-3">{p.sku}</p>
-
-                  <div className="grid grid-cols-3 gap-2 mb-4 pb-4 border-b border-gray-100">
-                    {[
-                      { label: "Capacity", value: p.capacity, color: "text-blue-600" },
-                      { label: "Power", value: p.power, color: "text-green-600" },
-                      { label: "Warranty", value: p.warranty, color: "text-purple-600" },
-                    ].map((spec) => (
-                      <div key={spec.label}>
-                        <p className={`text-xs font-medium ${spec.color} mb-0.5`}>{spec.label}</p>
-                        <p className="text-xs font-semibold text-gray-900">{spec.value}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {p.tags.map((tag) => (
-                      <span key={tag} className="px-2.5 py-1 bg-gray-100 text-gray-700 rounded-md text-xs font-medium">{tag}</span>
-                    ))}
-                  </div>
-
-                  <div className="mt-auto">
-                    <Link
-                      href="/contact"
-                      className="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-semibold text-white bg-[#1447E6] hover:bg-[#103ed6] hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-200"
-                    >
-                      Get in touch
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ProductCardGrid products={products} />
 
           <div className="text-center animate-fade-in-up">
             <Link
               href="/products"
               className="inline-flex items-center gap-2 px-8 py-2.5 border border-gray-300 text-gray-700 font-semibold rounded-xl hover:shadow-lg hover:shadow-gray-200 transition-all duration-300 group"
             >
-              View All Products
+              Browse All Products
               <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>

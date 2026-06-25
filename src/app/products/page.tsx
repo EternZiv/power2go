@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
 import { basePath } from "@/lib/basePath";
+import { ProductCardGrid } from "@/components/ProductCardGrid";
 
 export const metadata: Metadata = {
   title: "Products | Power2Go – Battery Storage Systems",
@@ -139,70 +139,7 @@ export default function ProductsPage() {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((p, i) => (
-              <div key={i} className="product-card group cursor-pointer bg-white animate-fade-in-up" style={{ animationDelay: `${i * 0.1}s` }}>
-                <div className={`relative h-52 bg-gradient-to-br ${p.gradient} overflow-hidden`}>
-                  <Link href={`/products/${p.slug}`}>
-                    <Image
-                      src={p.images[0]}
-                      alt={p.name}
-                      fill
-                      className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                  </Link>
-                  <span className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-md text-xs font-semibold bg-[#1447E6] text-white shadow-md">
-                    {p.category}
-                  </span>
-                  <Link
-                    href={`/products/${p.slug}`}
-                    className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white hover:scale-110"
-                    aria-label={`View ${p.name} details`}
-                  >
-                    <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                      <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/>
-                      <circle cx="12" cy="12" r="3"/>
-                    </svg>
-                  </Link>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent" />
-                </div>
-
-                <div className="p-6 flex flex-col flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-[#1447E6] transition-colors">{p.name}</h3>
-                  <p className="text-sm text-gray-400 mb-3 font-mono">{p.sku}</p>
-                  <p className="text-gray-600 text-sm mb-5 leading-relaxed flex-1">{p.description}</p>
-
-                  <div className="grid grid-cols-3 gap-3 mb-5 pb-5 border-b border-gray-100">
-                    {[
-                      { label: "Capacity", value: p.capacity },
-                      { label: "Power", value: p.power },
-                      { label: "Warranty", value: p.warranty },
-                    ].map((spec) => (
-                      <div key={spec.label}>
-                        <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wide mb-1">{spec.label}</p>
-                        <p className="text-xs font-bold text-gray-900">{spec.value}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-wrap gap-1.5 mb-5">
-                    {p.tags.map((tag) => (
-                      <span key={tag} className="px-2.5 py-1 bg-blue-50 text-[#1447E6] rounded-md text-xs font-medium">{tag}</span>
-                    ))}
-                  </div>
-
-                  <Link
-                    href="/contact"
-                    className="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-semibold text-white bg-[#1447E6] hover:bg-[#103ed6] hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-200"
-                  >
-                    Get in Touch
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ProductCardGrid products={products} columns={3} />
         </div>
       </section>
 

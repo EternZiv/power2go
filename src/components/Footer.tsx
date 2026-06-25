@@ -87,18 +87,18 @@ export function Footer() {
               <h3 className="text-white font-bold text-base mb-5">Contact Us</h3>
               <ul className="space-y-4">
                 <li className="flex gap-3 items-start">
-                  <svg className="w-4 h-4 text-[#50A2FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                  <svg className="w-4 h-4 text-[#50A2FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg>
                   <span className="text-white/60 text-sm leading-snug">1D-27 Sector 30, Korangi Karachi, Pakistan</span>
                 </li>
                 <li className="flex gap-3 items-start">
-                  <svg className="w-4 h-4 text-[#50A2FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
+                  <svg className="w-4 h-4 text-[#50A2FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" /></svg>
                   <div className="flex flex-col gap-0.5">
                     <span className="text-white/60 text-sm">Karachi: 111-P2G-247</span>
                     <span className="text-white/60 text-sm">Lahore: (042) 3591 1165-69</span>
                   </div>
                 </li>
                 <li className="flex gap-3 items-start">
-                  <svg className="w-4 h-4 text-[#50A2FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+                  <svg className="w-4 h-4 text-[#50A2FF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /><rect x="2" y="4" width="20" height="16" rx="2" /></svg>
                   <a href="mailto:info@power2go.energy" className="text-white/60 text-sm hover:text-blue-300 transition-colors">info@power2go.energy</a>
                 </li>
               </ul>
