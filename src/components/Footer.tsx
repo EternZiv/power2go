@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FadeInStagger, FadeInStaggerItem } from "@/components/animations";
+import { basePath } from "@/lib/basePath";
 
 export function Footer() {
   return (
@@ -15,7 +16,7 @@ export function Footer() {
             {/* Brand column */}
             <FadeInStaggerItem className="lg:col-span-3">
               <Link href="/" className="inline-block mb-5">
-                <Image src="/logo-light.png" alt="Power2Go" width={160} height={40} className="h-9 w-auto brightness-0 invert" />
+                <Image src={`${basePath}/logo-light.png`} alt="Power2Go" width={160} height={40} className="h-9 w-auto brightness-0 invert" />
               </Link>
               <p className="text-white/60 text-sm leading-relaxed mb-6 max-w-xs">
                 Leading manufacturer of advanced energy storage solutions for residential, commercial, and industrial applications.

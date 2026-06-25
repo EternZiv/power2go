@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { basePath } from "@/lib/basePath";
 
 export const metadata: Metadata = {
   title: "Blog | Power2Go – Energy Storage Insights & Updates",
@@ -16,7 +17,7 @@ const articles = [
     date: "March 15, 2026",
     readTime: "5 min read",
     color: "bg-blue-600",
-    image: "/images/9ffe617d218ca514485d2fc9add18954e09f1992.165a0bb0_4726.webp",
+    image: `${basePath}/images/9ffe617d218ca514485d2fc9add18954e09f1992.165a0bb0_4726.webp`,
   },
   {
     category: "Industry News",
@@ -25,7 +26,7 @@ const articles = [
     date: "February 28, 2026",
     readTime: "7 min read",
     color: "bg-green-600",
-    image: "/images/b513ab30d1b02dbe05d9d52d7e3e8a9aae208341.b861afc3_4a5c.webp",
+    image: `${basePath}/images/b513ab30d1b02dbe05d9d52d7e3e8a9aae208341.b861afc3_4a5c.webp`,
   },
   {
     category: "Tips & Guides",
@@ -34,7 +35,7 @@ const articles = [
     date: "February 10, 2026",
     readTime: "4 min read",
     color: "bg-purple-600",
-    image: "/images/d302be08e4e938ad503ae31569661716ec3fc738.a0799d91_904f.webp",
+    image: `${basePath}/images/d302be08e4e938ad503ae31569661716ec3fc738.a0799d91_904f.webp`,
   },
   {
     category: "Case Studies",
@@ -43,7 +44,7 @@ const articles = [
     date: "January 22, 2026",
     readTime: "6 min read",
     color: "bg-orange-500",
-    image: "/images/2cdaeedf90e235319e8a7b8ed818acd496eda538.e5a9b81f_d2ba.webp",
+    image: `${basePath}/images/2cdaeedf90e235319e8a7b8ed818acd496eda538.e5a9b81f_d2ba.webp`,
   },
   {
     category: "Technology",
@@ -52,7 +53,7 @@ const articles = [
     date: "January 5, 2026",
     readTime: "8 min read",
     color: "bg-blue-600",
-    image: "/images/ad3f165e372f5048d4697f9bed1945fb35149239.2e1e00e8_7434.jpg",
+    image: `${basePath}/images/ad3f165e372f5048d4697f9bed1945fb35149239.2e1e00e8_7434.jpg`,
   },
   {
     category: "Industry News",
@@ -61,7 +62,7 @@ const articles = [
     date: "December 18, 2025",
     readTime: "5 min read",
     color: "bg-teal-600",
-    image: "/images/ea529c31d35fcbf1a139a1bce88295e077160b2b.a041b307_0155.webp",
+    image: `${basePath}/images/ea529c31d35fcbf1a139a1bce88295e077160b2b.a041b307_0155.webp`,
   },
 ];
 

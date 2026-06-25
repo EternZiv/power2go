@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { basePath } from "@/lib/basePath";
 
 export const metadata: Metadata = {
   title: "Solutions | Power2Go – Energy Storage for Every Need",
@@ -19,7 +20,7 @@ const solutions = [
     lightColor: "bg-blue-50 text-blue-600",
     href: "/products",
     products: ["P2G LV Energy Vault 25"],
-    image: "/images/9ffe617d218ca514485d2fc9add18954e09f1992.165a0bb0_4726.webp",
+    image: `${basePath}/images/9ffe617d218ca514485d2fc9add18954e09f1992.165a0bb0_4726.webp`,
   },
   {
     icon: "🏢",
@@ -31,7 +32,7 @@ const solutions = [
     lightColor: "bg-green-50 text-green-600",
     href: "/products",
     products: ["P2G HV Energy Vault 75", "P2G HV Energy Vault 150"],
-    image: "/images/b513ab30d1b02dbe05d9d52d7e3e8a9aae208341.b861afc3_4a5c.webp",
+    image: `${basePath}/images/b513ab30d1b02dbe05d9d52d7e3e8a9aae208341.b861afc3_4a5c.webp`,
   },
   {
     icon: "🏭",
@@ -43,7 +44,7 @@ const solutions = [
     lightColor: "bg-purple-50 text-purple-600",
     href: "/products",
     products: ["P2G Industrial PowerStack"],
-    image: "/images/2cdaeedf90e235319e8a7b8ed818acd496eda538.e5a9b81f_d2ba.webp",
+    image: `${basePath}/images/2cdaeedf90e235319e8a7b8ed818acd496eda538.e5a9b81f_d2ba.webp`,
   },
   {
     icon: "🎒",
@@ -55,7 +56,7 @@ const solutions = [
     lightColor: "bg-orange-50 text-orange-600",
     href: "/products",
     products: ["P2G PULSE"],
-    image: "/images/ea529c31d35fcbf1a139a1bce88295e077160b2b.a041b307_0155.webp",
+    image: `${basePath}/images/ea529c31d35fcbf1a139a1bce88295e077160b2b.a041b307_0155.webp`,
   },
 ];
 

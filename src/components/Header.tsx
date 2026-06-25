@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { basePath } from "@/lib/basePath";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -45,7 +46,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 flex-shrink-0">
             <Image
-              src="/logo-light.png"
+              src={`${basePath}/logo-light.png`}
               alt="Power2Go"
               width={140}
               height={36}

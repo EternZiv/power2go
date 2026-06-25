@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { basePath } from "@/lib/basePath";
 
 const solutions = [
   {
@@ -58,7 +59,7 @@ const products = [
     warranty: "5 Years",
     tags: ["Reliable", "Space Saving", "Easy Install"],
     gradient: "from-blue-50 to-slate-100",
-    images: ["/images/9ffe617d218ca514485d2fc9add18954e09f1992.165a0bb0_4726.webp", "/images/d302be08e4e938ad503ae31569661716ec3fc738.a0799d91_904f.webp"],
+    images: [`${basePath}/images/9ffe617d218ca514485d2fc9add18954e09f1992.165a0bb0_4726.webp`, `${basePath}/images/d302be08e4e938ad503ae31569661716ec3fc738.a0799d91_904f.webp`],
   },
   {
     slug: "p2g-hv-energy-vault-75",
@@ -70,7 +71,7 @@ const products = [
     warranty: "5 Years",
     tags: ["Scalable", "High Efficiency", "Modular"],
     gradient: "from-green-50 to-slate-100",
-    images: ["/images/b513ab30d1b02dbe05d9d52d7e3e8a9aae208341.b861afc3_4a5c.webp", "/images/2cdaeedf90e235319e8a7b8ed818acd496eda538.e5a9b81f_d2ba.webp"],
+    images: [`${basePath}/images/b513ab30d1b02dbe05d9d52d7e3e8a9aae208341.b861afc3_4a5c.webp`, `${basePath}/images/2cdaeedf90e235319e8a7b8ed818acd496eda538.e5a9b81f_d2ba.webp`],
   },
   {
     slug: "p2g-pulse",
@@ -82,7 +83,7 @@ const products = [
     warranty: "5 Years",
     tags: ["Compact", "Portable", "Fast Charging"],
     gradient: "from-purple-50 to-slate-100",
-    images: ["/images/ea529c31d35fcbf1a139a1bce88295e077160b2b.a041b307_0155.webp", "/images/ef874dcffa3b6df96abbfdb341b85bb71e57c94a.0dd5abf1_52a3.webp"],
+    images: [`${basePath}/images/ea529c31d35fcbf1a139a1bce88295e077160b2b.a041b307_0155.webp`, `${basePath}/images/ef874dcffa3b6df96abbfdb341b85bb71e57c94a.0dd5abf1_52a3.webp`],
   },
   {
     slug: "p2g-energy-monitoring-system",
@@ -94,7 +95,7 @@ const products = [
     warranty: "5 Years",
     tags: ["Real-time Data", "Cloud Analytics", "Multi-device"],
     gradient: "from-orange-50 to-slate-100",
-    images: ["/images/ad3f165e372f5048d4697f9bed1945fb35149239.2e1e00e8_7434.jpg"],
+    images: [`${basePath}/images/ad3f165e372f5048d4697f9bed1945fb35149239.2e1e00e8_7434.jpg`],
   },
 ];
 

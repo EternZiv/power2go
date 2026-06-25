@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { basePath } from "@/lib/basePath";
 
 export const metadata: Metadata = {
   title: "Products | Power2Go – Battery Storage Systems",
@@ -22,7 +23,7 @@ const products = [
     tags: ["Reliable", "Space Saving", "Easy Installation"],
     gradient: "from-blue-50 to-slate-100",
     description: "Compact and efficient residential energy storage unit designed for homes wanting to maximize solar self-consumption.",
-    images: ["/images/9ffe617d218ca514485d2fc9add18954e09f1992.165a0bb0_4726.webp", "/images/d302be08e4e938ad503ae31569661716ec3fc738.a0799d91_904f.webp"],
+    images: [`${basePath}/images/9ffe617d218ca514485d2fc9add18954e09f1992.165a0bb0_4726.webp`, `${basePath}/images/d302be08e4e938ad503ae31569661716ec3fc738.a0799d91_904f.webp`],
   },
   {
     slug: "p2g-hv-energy-vault-75",
@@ -37,7 +38,7 @@ const products = [
     tags: ["Scalable", "High Efficiency", "Modular Design"],
     gradient: "from-green-50 to-slate-100",
     description: "High-voltage commercial battery system with modular architecture for scalable energy storage deployments.",
-    images: ["/images/b513ab30d1b02dbe05d9d52d7e3e8a9aae208341.b861afc3_4a5c.webp", "/images/2cdaeedf90e235319e8a7b8ed818acd496eda538.e5a9b81f_d2ba.webp"],
+    images: [`${basePath}/images/b513ab30d1b02dbe05d9d52d7e3e8a9aae208341.b861afc3_4a5c.webp`, `${basePath}/images/2cdaeedf90e235319e8a7b8ed818acd496eda538.e5a9b81f_d2ba.webp`],
   },
   {
     slug: "p2g-pulse",
@@ -52,7 +53,7 @@ const products = [
     tags: ["Compact", "Portable", "Fast Charging"],
     gradient: "from-purple-50 to-slate-100",
     description: "Ultra-portable power station ideal for outdoor activities, emergency backup, and remote site operations.",
-    images: ["/images/ea529c31d35fcbf1a139a1bce88295e077160b2b.a041b307_0155.webp", "/images/ef874dcffa3b6df96abbfdb341b85bb71e57c94a.0dd5abf1_52a3.webp"],
+    images: [`${basePath}/images/ea529c31d35fcbf1a139a1bce88295e077160b2b.a041b307_0155.webp`, `${basePath}/images/ef874dcffa3b6df96abbfdb341b85bb71e57c94a.0dd5abf1_52a3.webp`],
   },
   {
     slug: "p2g-energy-monitoring-system",
@@ -67,7 +68,7 @@ const products = [
     tags: ["Real-time Data", "Cloud Analytics", "Multi-device"],
     gradient: "from-orange-50 to-slate-100",
     description: "Smart energy monitoring platform providing real-time insights on solar generation, consumption, and battery status.",
-    images: ["/images/ad3f165e372f5048d4697f9bed1945fb35149239.2e1e00e8_7434.jpg"],
+    images: [`${basePath}/images/ad3f165e372f5048d4697f9bed1945fb35149239.2e1e00e8_7434.jpg`],
   },
   {
     slug: "p2g-industrial-powerstack",
@@ -82,7 +83,7 @@ const products = [
     tags: ["High Capacity", "Scalable", "Remote Monitoring"],
     gradient: "from-red-50 to-slate-100",
     description: "Industrial-grade battery system designed for large-scale energy storage in factories and industrial facilities.",
-    images: ["/images/b513ab30d1b02dbe05d9d52d7e3e8a9aae208341.b861afc3_4a5c.webp"],
+    images: [`${basePath}/images/b513ab30d1b02dbe05d9d52d7e3e8a9aae208341.b861afc3_4a5c.webp`],
   },
   {
     slug: "p2g-hv-energy-vault-150",
@@ -97,7 +98,7 @@ const products = [
     tags: ["Modular", "Smart BMS", "IP55 Rated"],
     gradient: "from-teal-50 to-slate-100",
     description: "Extended capacity commercial vault for businesses with high energy demands and complex load profiles.",
-    images: ["/images/2cdaeedf90e235319e8a7b8ed818acd496eda538.e5a9b81f_d2ba.webp"],
+    images: [`${basePath}/images/2cdaeedf90e235319e8a7b8ed818acd496eda538.e5a9b81f_d2ba.webp`],
   },
 ];
 
