@@ -1,0 +1,216 @@
+export type Product = {
+  slug: string;
+  name: string;
+  sku: string;
+  category: string;
+  capacity: string;
+  power: string;
+  voltage?: string;
+  cells?: string;
+  warranty: string;
+  tags: string[];
+  gradient: string;
+  description: string;
+  images: string[];
+  features?: string[];
+  specs?: { label: string; value: string }[];
+};
+
+export const products: Product[] = [
+  {
+    slug: "p2g-lv-energy-vault-25",
+    name: "P2G LV Energy Vault 25",
+    sku: "LV-25",
+    category: "Residential",
+    capacity: "5 kWh",
+    power: "2.5 kW",
+    voltage: "48V",
+    cells: "LiFePO4",
+    warranty: "5 Years",
+    tags: ["Reliable", "Space Saving", "Easy Installation"],
+    gradient: "from-blue-50 to-slate-100",
+    description: "Compact and efficient residential energy storage unit designed for homes wanting to maximize solar self-consumption. Perfect for daily cycling and backup power.",
+    images: ["/images/9ffe617d218ca514485d2fc9add18954e09f1992.165a0bb0_4726.webp", "/images/d302be08e4e938ad503ae31569661716ec3fc738.a0799d91_904f.webp"],
+    features: [
+      "Advanced LiFePO4 battery chemistry for long cycle life",
+      "Compact wall-mount design saves valuable floor space",
+      "Seamless integration with existing solar systems",
+      "Smart BMS with real-time monitoring via mobile app",
+      "Silent operation with no moving parts",
+    ],
+    specs: [
+      { label: "Usable Capacity", value: "5 kWh" },
+      { label: "Nominal Power", value: "2.5 kW" },
+      { label: "Peak Power", value: "5 kW (10s)" },
+      { label: "Voltage", value: "48V" },
+      { label: "Cell Type", value: "LiFePO4" },
+      { label: "Cycle Life", value: "6000+ cycles" },
+      { label: "Weight", value: "65 kg" },
+      { label: "IP Rating", value: "IP54" },
+    ],
+  },
+  {
+    slug: "p2g-hv-energy-vault-75",
+    name: "P2G HV Energy Vault 75",
+    sku: "HV-75",
+    category: "Commercial",
+    capacity: "7.5 kWh",
+    power: "3.75 kW",
+    voltage: "96V",
+    cells: "LiFePO4",
+    warranty: "5 Years",
+    tags: ["Scalable", "High Efficiency", "Modular Design"],
+    gradient: "from-green-50 to-slate-100",
+    description: "High-voltage commercial battery system with modular architecture for scalable energy storage deployments across businesses and offices.",
+    images: ["/images/b513ab30d1b02dbe05d9d52d7e3e8a9aae208341.b861afc3_4a5c.webp", "/images/2cdaeedf90e235319e8a7b8ed818acd496eda538.e5a9b81f_d2ba.webp"],
+    features: [
+      "High-voltage architecture for commercial efficiency",
+      "Modular design allows stacking up to 4 units",
+      "Advanced thermal management for consistent performance",
+      "Remote fleet monitoring via cloud platform",
+      "Peak shaving and demand charge reduction",
+    ],
+    specs: [
+      { label: "Usable Capacity", value: "7.5 kWh" },
+      { label: "Nominal Power", value: "3.75 kW" },
+      { label: "Peak Power", value: "7.5 kW (10s)" },
+      { label: "Voltage", value: "96V" },
+      { label: "Cell Type", value: "LiFePO4" },
+      { label: "Cycle Life", value: "6000+ cycles" },
+      { label: "Weight", value: "98 kg" },
+      { label: "IP Rating", value: "IP55" },
+    ],
+  },
+  {
+    slug: "p2g-pulse",
+    name: "P2G PULSE",
+    sku: "PULSE-320",
+    category: "Portable",
+    capacity: "1000 Wh",
+    power: "500 W",
+    voltage: "24V",
+    cells: "NMC",
+    warranty: "5 Years",
+    tags: ["Compact", "Portable", "Fast Charging"],
+    gradient: "from-purple-50 to-slate-100",
+    description: "Ultra-portable power station ideal for outdoor activities, emergency backup, and remote site operations. Charge everything from phones to power tools.",
+    images: ["/images/ea529c31d35fcbf1a139a1bce88295e077160b2b.a041b307_0155.webp", "/images/ef874dcffa3b6df96abbfdb341b85bb71e57c94a.0dd5abf1_52a3.webp"],
+    features: [
+      "Multiple output ports including AC, USB-C, and DC",
+      "Fast charging from wall or solar panels",
+      "Pure sine wave inverter for sensitive electronics",
+      "Compact carry handle design for portability",
+      "LED emergency light with multiple modes",
+    ],
+    specs: [
+      { label: "Capacity", value: "1000 Wh" },
+      { label: "AC Output", value: "500 W (1000 W peak)" },
+      { label: "USB-C", value: "100W PD" },
+      { label: "Solar Input", value: "200W max" },
+      { label: "Cell Type", value: "NMC" },
+      { label: "Cycle Life", value: "2000+ cycles" },
+      { label: "Weight", value: "8.5 kg" },
+      { label: "Dimensions", value: "32 x 22 x 25 cm" },
+    ],
+  },
+  {
+    slug: "p2g-energy-monitoring-system",
+    name: "P2G Energy Monitoring System",
+    sku: "SEM-PRO",
+    category: "Monitoring",
+    capacity: "Solar Monitoring",
+    power: "Real-time Analytics",
+    voltage: "—",
+    cells: "—",
+    warranty: "5 Years",
+    tags: ["Real-time Data", "Cloud Analytics", "Multi-device"],
+    gradient: "from-orange-50 to-slate-100",
+    description: "Smart energy monitoring platform providing real-time insights on solar generation, consumption, and battery status from anywhere.",
+    images: ["/images/ad3f165e372f5048d4697f9bed1945fb35149239.2e1e00e8_7434.jpg"],
+    features: [
+      "Real-time energy monitoring dashboard",
+      "Cloud-based data storage with 5-year history",
+      "Multi-device support (web, iOS, Android)",
+      "Smart alerts for anomalies and thresholds",
+      "API access for custom integrations",
+    ],
+    specs: [
+      { label: "Display", value: "7-inch Touch LCD" },
+      { label: "Connectivity", value: "WiFi, Ethernet, 4G" },
+      { label: "Sensors", value: "CT Clamps, PT, Temp" },
+      { label: "Accuracy", value: "±0.5%" },
+      { label: "Data Storage", value: "Cloud (5 years)" },
+      { label: "App Support", value: "iOS & Android" },
+      { label: "Power Supply", value: "PoE / 12V DC" },
+      { label: "Mounting", value: "DIN Rail / Wall" },
+    ],
+  },
+  {
+    slug: "p2g-industrial-powerstack",
+    name: "P2G Industrial PowerStack",
+    sku: "IPS-500",
+    category: "Industrial",
+    capacity: "50+ kWh",
+    power: "25+ kW",
+    voltage: "384V",
+    cells: "LiFePO4",
+    warranty: "5 Years",
+    tags: ["High Capacity", "Scalable", "Remote Monitoring"],
+    gradient: "from-red-50 to-slate-100",
+    description: "Industrial-grade battery system designed for large-scale energy storage in factories, data centers, and industrial facilities.",
+    images: ["/images/b513ab30d1b02dbe05d9d52d7e3e8a9aae208341.b861afc3_4a5c.webp"],
+    features: [
+      "Scalable from 50 kWh to 1 MWh+",
+      "Industrial-grade BMS with multi-layer protection",
+      "Grid-tied and off-grid operation modes",
+      "24/7 remote monitoring and control",
+      "Seismic-certified rack mounting system",
+    ],
+    specs: [
+      { label: "Capacity", value: "50+ kWh (scalable)" },
+      { label: "Power", value: "25+ kW" },
+      { label: "Voltage", value: "384V" },
+      { label: "Cell Type", value: "LiFePO4" },
+      { label: "Cycle Life", value: "8000+ cycles" },
+      { label: "Cooling", value: "Liquid cooled" },
+      { label: "IP Rating", value: "IP65" },
+      { label: "Certification", value: "CE, UL, IEC" },
+    ],
+  },
+  {
+    slug: "p2g-hv-energy-vault-150",
+    name: "P2G HV Energy Vault 150",
+    sku: "HV-150",
+    category: "Commercial",
+    capacity: "15 kWh",
+    power: "7.5 kW",
+    voltage: "192V",
+    cells: "LiFePO4",
+    warranty: "5 Years",
+    tags: ["Modular", "Smart BMS", "IP55 Rated"],
+    gradient: "from-teal-50 to-slate-100",
+    description: "Extended capacity commercial vault for businesses with high energy demands and complex load profiles requiring reliable backup.",
+    images: ["/images/2cdaeedf90e235319e8a7b8ed818acd496eda538.e5a9b81f_d2ba.webp"],
+    features: [
+      "Double the capacity of HV-75 in same footprint",
+      "Advanced Smart BMS with AI-driven optimization",
+      "IP55 rated for outdoor and harsh environments",
+      "Parallel up to 4 units for 60 kWh total",
+      "Integrated fire suppression system",
+    ],
+    specs: [
+      { label: "Usable Capacity", value: "15 kWh" },
+      { label: "Nominal Power", value: "7.5 kW" },
+      { label: "Peak Power", value: "15 kW (10s)" },
+      { label: "Voltage", value: "192V" },
+      { label: "Cell Type", value: "LiFePO4" },
+      { label: "Cycle Life", value: "6000+ cycles" },
+      { label: "Weight", value: "165 kg" },
+      { label: "IP Rating", value: "IP55" },
+    ],
+  },
+];
+
+export function getProductBySlug(slug: string): Product | undefined {
+  return products.find((p) => p.slug === slug);
+}
