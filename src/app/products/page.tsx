@@ -1,124 +1,80 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Link from "next/link";
-import type { Metadata } from "next";
+import Image from "next/image";
 import { basePath } from "@/lib/basePath";
+import { products } from "@/lib/products";
 import { ProductCardGrid } from "@/components/ProductCardGrid";
 import { Breadcrumb } from "@/components/Breadcrumb";
-
-export const metadata: Metadata = {
-  title: "Products",
-  description: "Explore our full range of energy storage systems: residential, commercial, industrial, portable, and monitoring solutions.",
-};
-
-const products = [
-  {
-    slug: "p2g-lv-energy-vault-25",
-    name: "P2G LV Energy Vault 25",
-    sku: "LV-25",
-    category: "Residential",
-    capacity: "5 kWh",
-    power: "2.5 kW",
-    voltage: "48V",
-    cells: "LiFePO4",
-    warranty: "5 Years",
-    tags: ["Reliable", "Space Saving", "Easy Installation"],
-    gradient: "from-blue-50 to-slate-100",
-    description: "Compact and efficient residential energy storage unit designed for homes wanting to maximize solar self-consumption.",
-    images: [`${basePath}/images/9ffe617d218ca514485d2fc9add18954e09f1992.165a0bb0_4726.webp`, `${basePath}/images/d302be08e4e938ad503ae31569661716ec3fc738.a0799d91_904f.webp`],
-  },
-  {
-    slug: "p2g-hv-energy-vault-75",
-    name: "P2G HV Energy Vault 75",
-    sku: "HV-75",
-    category: "Commercial",
-    capacity: "7.5 kWh",
-    power: "3.75 kW",
-    voltage: "96V",
-    cells: "LiFePO4",
-    warranty: "5 Years",
-    tags: ["Scalable", "High Efficiency", "Modular Design"],
-    gradient: "from-green-50 to-slate-100",
-    description: "High-voltage commercial battery system with modular architecture for scalable energy storage deployments.",
-    images: [`${basePath}/images/b513ab30d1b02dbe05d9d52d7e3e8a9aae208341.b861afc3_4a5c.webp`, `${basePath}/images/2cdaeedf90e235319e8a7b8ed818acd496eda538.e5a9b81f_d2ba.webp`],
-  },
-  {
-    slug: "p2g-pulse",
-    name: "P2G PULSE",
-    sku: "PULSE-320",
-    category: "Portable",
-    capacity: "1000 Wh",
-    power: "500 W",
-    voltage: "24V",
-    cells: "NMC",
-    warranty: "5 Years",
-    tags: ["Compact", "Portable", "Fast Charging"],
-    gradient: "from-purple-50 to-slate-100",
-    description: "Ultra-portable power station ideal for outdoor activities, emergency backup, and remote site operations.",
-    images: [`${basePath}/images/ea529c31d35fcbf1a139a1bce88295e077160b2b.a041b307_0155.webp`, `${basePath}/images/ef874dcffa3b6df96abbfdb341b85bb71e57c94a.0dd5abf1_52a3.webp`],
-  },
-  {
-    slug: "p2g-energy-monitoring-system",
-    name: "P2G Energy Monitoring System",
-    sku: "SEM-PRO",
-    category: "Monitoring",
-    capacity: "Solar Monitoring",
-    power: "Real-time Analytics",
-    voltage: "—",
-    cells: "—",
-    warranty: "5 Years",
-    tags: ["Real-time Data", "Cloud Analytics", "Multi-device"],
-    gradient: "from-orange-50 to-slate-100",
-    description: "Smart energy monitoring platform providing real-time insights on solar generation, consumption, and battery status.",
-    images: [`${basePath}/images/ad3f165e372f5048d4697f9bed1945fb35149239.2e1e00e8_7434.jpg`],
-  },
-  {
-    slug: "p2g-industrial-powerstack",
-    name: "P2G Industrial PowerStack",
-    sku: "IPS-500",
-    category: "Industrial",
-    capacity: "50+ kWh",
-    power: "25+ kW",
-    voltage: "384V",
-    cells: "LiFePO4",
-    warranty: "5 Years",
-    tags: ["High Capacity", "Scalable", "Remote Monitoring"],
-    gradient: "from-red-50 to-slate-100",
-    description: "Industrial-grade battery system designed for large-scale energy storage in factories and industrial facilities.",
-    images: [`${basePath}/images/b513ab30d1b02dbe05d9d52d7e3e8a9aae208341.b861afc3_4a5c.webp`],
-  },
-  {
-    slug: "p2g-hv-energy-vault-150",
-    name: "P2G HV Energy Vault 150",
-    sku: "HV-150",
-    category: "Commercial",
-    capacity: "15 kWh",
-    power: "7.5 kW",
-    voltage: "192V",
-    cells: "LiFePO4",
-    warranty: "5 Years",
-    tags: ["Modular", "Smart BMS", "IP55 Rated"],
-    gradient: "from-teal-50 to-slate-100",
-    description: "Extended capacity commercial vault for businesses with high energy demands and complex load profiles.",
-    images: [`${basePath}/images/2cdaeedf90e235319e8a7b8ed818acd496eda538.e5a9b81f_d2ba.webp`],
-  },
-];
 
 const categories = ["All", "Residential", "Commercial", "Industrial", "Portable", "Monitoring"];
 
 export default function ProductsPage() {
+  const [activeCategory, setActiveCategory] = useState("All");
+  const filtered = activeCategory === "All" ? products : products.filter((p) => p.category === activeCategory);
+
   return (
     <>
       <section className="relative overflow-hidden min-h-[100dvh] flex items-center pt-14">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1447E6] via-[#0d1726] to-[#01b0d9]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/40 via-transparent to-transparent" />
+        <Image
+          src={`${basePath}/images/5.jpeg`}
+          alt="Power2Go product range - energy storage systems"
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          priority
+          quality={85}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0d1726]/90 via-[#0d1726]/70 to-[#1447E6]/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/60 via-transparent to-transparent" />
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
           <Breadcrumb items={[{ label: "Products" }]} />
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in-left">
-            Our Products
-          </h1>
-          <p className="text-white/80 text-lg max-w-2xl animate-fade-in-left delay-100">
-            Explore our complete range of advanced energy storage systems built for every application.
-          </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in-left">
+                Our Products
+              </h1>
+              <p className="text-white/80 text-lg max-w-2xl animate-fade-in-left delay-100 leading-relaxed">
+                Explore our complete range of advanced energy storage systems built for every application. From residential backup to industrial-scale power, we have the solution for you.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-4 animate-fade-in-left delay-200">
+                <div className="flex items-center gap-2 text-white/70 text-sm">
+                  <svg className="w-5 h-5 text-[#22c55e]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>LiFePO₄ Battery</span>
+                </div>
+                <div className="flex items-center gap-2 text-white/70 text-sm">
+                  <svg className="w-5 h-5 text-[#22c55e]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>6,000+ Cycles</span>
+                </div>
+                <div className="flex items-center gap-2 text-white/70 text-sm">
+                  <svg className="w-5 h-5 text-[#22c55e]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>Smart BMS</span>
+                </div>
+                <div className="flex items-center gap-2 text-white/70 text-sm">
+                  <svg className="w-5 h-5 text-[#22c55e]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>5 Year Warranty</span>
+                </div>
+              </div>
+            </div>
+            <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <p className="text-3xl font-bold text-[#22c55e]">6</p>
+                <p className="text-white/70 text-sm mt-1">Product Models</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <p className="text-3xl font-bold text-[#22c55e]">5Wh-150kWh</p>
+                <p className="text-white/70 text-sm mt-1">Capacity Range</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <p className="text-3xl font-bold text-[#22c55e]">98%</p>
+                <p className="text-white/70 text-sm mt-1">Round-Trip Efficiency</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <p className="text-3xl font-bold text-[#22c55e]">CE, UL</p>
+                <p className="text-white/70 text-sm mt-1">Certified</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -128,18 +84,20 @@ export default function ProductsPage() {
             {categories.map((cat) => (
               <button
                 key={cat}
+                onClick={() => setActiveCategory(cat)}
                 className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                  cat === "All"
+                  cat === activeCategory
                     ? "bg-[#1447E6] text-white shadow-md shadow-blue-200"
                     : "bg-white text-gray-600 border border-gray-200 hover:border-[#1447E6] hover:text-[#1447E6] hover:shadow-sm"
                 }`}
+                aria-pressed={cat === activeCategory}
               >
                 {cat}
               </button>
             ))}
           </div>
 
-          <ProductCardGrid products={products} columns={3} />
+          <ProductCardGrid products={filtered} columns={3} />
         </div>
       </section>
 

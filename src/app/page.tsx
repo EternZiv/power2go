@@ -127,7 +127,7 @@ export default function HomePage() {
     <>
       <section className="relative overflow-hidden min-h-[100dvh] flex items-center">
         <Image
-          src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1800&q=80"
+          src={`${basePath}/images/1.jpeg`}
           alt="Wind turbines and solar panels at sunset representing clean energy"
           fill
           className="object-cover object-center"
@@ -139,35 +139,78 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/60 via-transparent to-transparent pointer-events-none" />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-40">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs sm:text-sm font-medium tracking-wider shadow-md animate-fade-in-left">
-              <span className="w-2 h-2 rounded-full bg-[#22c55e]" aria-hidden="true" />
-              Advanced Energy Storage Solutions
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="max-w-3xl">
+              <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs sm:text-sm font-medium tracking-wider shadow-md animate-fade-in-left">
+                <span className="w-2 h-2 rounded-full bg-[#22c55e]" aria-hidden="true" />
+                Pakistan&apos;s Leading Energy Storage Provider
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl md:text-[64px] font-bold tracking-tight text-white leading-[1.1] animate-fade-in-left delay-100">
+                Power Your Future<br />
+                <span className="bg-gradient-to-r from-[#22c55e] to-[#01b0d9] bg-clip-text text-transparent">with Clean Energy</span>
+              </h1>
+
+              <p className="mt-6 max-w-xl text-base sm:text-lg text-white/85 leading-8 animate-fade-in-left delay-200">
+                Discover cutting-edge battery storage systems designed for residential, commercial, and industrial applications. Maximize your energy independence with Power2Go&apos;s advanced lithium iron phosphate technology.
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-4 animate-fade-in-left delay-250">
+                <div className="flex items-center gap-2 text-white/70 text-sm">
+                  <svg className="w-5 h-5 text-[#22c55e]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>6,000+ Cycle Life</span>
+                </div>
+                <div className="flex items-center gap-2 text-white/70 text-sm">
+                  <svg className="w-5 h-5 text-[#22c55e]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>99.9% System Uptime</span>
+                </div>
+                <div className="flex items-center gap-2 text-white/70 text-sm">
+                  <svg className="w-5 h-5 text-[#22c55e]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>5-Year Warranty</span>
+                </div>
+                <div className="flex items-center gap-2 text-white/70 text-sm">
+                  <svg className="w-5 h-5 text-[#22c55e]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>LiFePO₄ Technology</span>
+                </div>
+              </div>
+
+              <div className="mt-8 flex flex-col sm:flex-row gap-4 animate-fade-in-left delay-300">
+                <Link href="/products" className="btn-primary group">
+                  Explore Products
+                  <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </Link>
+                <Link href="/contact" className="btn-outline">
+                  Get In Touch
+                </Link>
+              </div>
+
+              <div className="mt-12 flex items-center gap-6 text-white/50 text-xs animate-fade-in-left delay-500">
+                <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#22c55e]" aria-hidden="true" /> CE Certified</span>
+                <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#22c55e]" aria-hidden="true" /> UL Listed</span>
+                <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#22c55e]" aria-hidden="true" /> IEC Compliant</span>
+                <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#22c55e]" aria-hidden="true" /> ISO 9001</span>
+              </div>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-[64px] font-bold tracking-tight text-white leading-[1.1] animate-fade-in-left delay-100">
-              Power Your Future<br />
-              <span className="bg-gradient-to-r from-[#22c55e] to-[#01b0d9] bg-clip-text text-transparent">with Clean Energy</span>
-            </h1>
-
-            <p className="mt-6 max-w-xl text-base sm:text-lg text-white/85 leading-8 animate-fade-in-left delay-200">
-              Discover cutting-edge battery storage systems designed for residential, commercial, and industrial applications. Maximize your energy independence with Power2Go.
-            </p>
-
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 animate-fade-in-left delay-300">
-              <Link href="/products" className="btn-primary group">
-                Explore Products
-                <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </Link>
-              <Link href="/contact" className="btn-outline">
-                Get In Touch
-              </Link>
-            </div>
-
-            <div className="mt-12 flex items-center gap-8 text-white/50 text-xs animate-fade-in-left delay-500">
-              <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#22c55e]" aria-hidden="true" /> CE Certified</span>
-              <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#22c55e]" aria-hidden="true" /> UL Listed</span>
-              <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#22c55e]" aria-hidden="true" /> IEC Compliant</span>
+            <div className="hidden lg:flex flex-col gap-4 animate-fade-in-right delay-300">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                  <p className="text-3xl font-bold text-[#22c55e]">15+</p>
+                  <p className="text-white/70 text-sm mt-1">Years Experience</p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                  <p className="text-3xl font-bold text-[#22c55e]">500+</p>
+                  <p className="text-white/70 text-sm mt-1">Systems Deployed</p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                  <p className="text-3xl font-bold text-[#22c55e]">50MW+</p>
+                  <p className="text-white/70 text-sm mt-1">Installed Capacity</p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                  <p className="text-3xl font-bold text-[#22c55e]">98%</p>
+                  <p className="text-white/70 text-sm mt-1">Client Satisfaction</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

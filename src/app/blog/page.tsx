@@ -3,90 +3,80 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { basePath } from "@/lib/basePath";
+import { articles } from "@/lib/blog";
 import { Breadcrumb } from "@/components/Breadcrumb";
 
-const articles = [
-  {
-    slug: "future-of-residential-energy-storage-pakistan",
-    category: "Technology",
-    tag: "Featured",
-    title: "The Future of Residential Energy Storage in Pakistan",
-    excerpt: "Energy storage systems are transforming homes across Pakistan, dramatically cutting electricity bills and providing resilience against load-shedding.",
-    date: "March 15, 2026",
-    readTime: "5 min read",
-    color: "bg-blue-600",
-    image: `${basePath}/images/9ffe617d218ca514485d2fc9add18954e09f1992.165a0bb0_4726.webp`,
-  },
-  {
-    slug: "lifepo4-vs-nmc-battery-chemistry-comparison",
-    category: "Industry News",
-    title: "LiFePO4 vs NMC: Which Battery Chemistry is Right for You?",
-    excerpt: "Choosing the right battery chemistry is crucial for performance, safety, and longevity. We compare the two dominant lithium-ion technologies.",
-    date: "February 28, 2026",
-    readTime: "7 min read",
-    color: "bg-green-600",
-    image: `${basePath}/images/b513ab30d1b02dbe05d9d52d7e3e8a9aae208341.b861afc3_4a5c.webp`,
-  },
-  {
-    slug: "how-to-maximize-solar-battery-system-roi",
-    category: "Tips & Guides",
-    title: "How to Maximize Your Solar Battery System ROI",
-    excerpt: "Smart usage habits and time-of-use optimization can dramatically increase the return on your energy storage investment.",
-    date: "February 10, 2026",
-    readTime: "4 min read",
-    color: "bg-purple-600",
-    image: `${basePath}/images/d302be08e4e938ad503ae31569661716ec3fc738.a0799d91_904f.webp`,
-  },
-  {
-    slug: "karachi-factory-cuts-energy-costs-by-60-percent",
-    category: "Case Studies",
-    title: "How a Karachi Factory Cut Energy Costs by 60%",
-    excerpt: "A detailed case study on how a medium-sized manufacturing facility used P2G Industrial PowerStack to reduce monthly electricity bills.",
-    date: "January 22, 2026",
-    readTime: "6 min read",
-    color: "bg-orange-500",
-    image: `${basePath}/images/2cdaeedf90e235319e8a7b8ed818acd496eda538.e5a9b81f_d2ba.webp`,
-  },
-  {
-    slug: "understanding-battery-management-systems-bms",
-    category: "Technology",
-    title: "Understanding Battery Management Systems (BMS)",
-    excerpt: "The BMS is the brain of every energy storage system. Learn how it protects your battery, optimizes performance, and extends its lifespan.",
-    date: "January 5, 2026",
-    readTime: "8 min read",
-    color: "bg-blue-600",
-    image: `${basePath}/images/ad3f165e372f5048d4697f9bed1945fb35149239.2e1e00e8_7434.jpg`,
-  },
-  {
-    slug: "pakistan-energy-crisis-how-storage-can-help",
-    category: "Industry News",
-    title: "Pakistan's Energy Crisis: How Storage Can Help",
-    excerpt: "With chronic power shortages impacting businesses and homes, distributed energy storage is emerging as a critical solution for Pakistan's grid.",
-    date: "December 18, 2025",
-    readTime: "5 min read",
-    color: "bg-teal-600",
-    image: `${basePath}/images/ea529c31d35fcbf1a139a1bce88295e077160b2b.a041b307_0155.webp`,
-  },
-];
+const categoryColors: Record<string, string> = {
+  Technology: "bg-blue-600",
+  "Industry News": "bg-green-600",
+  "Tips & Guides": "bg-purple-600",
+  "Case Studies": "bg-orange-500",
+};
 
 const categories = ["All", "Technology", "Industry News", "Tips & Guides", "Case Studies"];
 
 export default function BlogPage() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [featured, ...rest] = articles;
+  const featured = articles.find((a) => a.featured) ?? articles[0];
+  const rest = articles.filter((a) => a.slug !== featured.slug);
   const filtered = activeCategory === "All" ? rest : rest.filter((a) => a.category === activeCategory);
 
   return (
     <>
       <section className="relative overflow-hidden min-h-[100dvh] flex items-center pt-14">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1447E6] via-[#0d1726] to-[#01b0d9]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/40 via-transparent to-transparent" />
+        <Image
+          src={`${basePath}/images/6.jpeg`}
+          alt="Power2Go blog - energy storage insights and guides"
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          priority
+          quality={85}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0d1726]/90 via-[#0d1726]/70 to-[#1447E6]/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/60 via-transparent to-transparent" />
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
           <Breadcrumb items={[{ label: "Blog" }]} />
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in-left">Power2Go Blog</h1>
-          <p className="text-white/80 text-lg animate-fade-in-left delay-100">
-            Insights, updates, and guides on energy storage technology
-          </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in-left">Power2Go Blog</h1>
+              <p className="text-white/80 text-lg max-w-2xl animate-fade-in-left delay-100 leading-relaxed">
+                Insights, updates, and expert guides on energy storage technology, battery chemistry, solar integration, and maximizing your energy independence.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-4 animate-fade-in-left delay-200">
+                <div className="flex items-center gap-2 text-white/70 text-sm">
+                  <svg className="w-5 h-5 text-[#22c55e]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>Expert Insights</span>
+                </div>
+                <div className="flex items-center gap-2 text-white/70 text-sm">
+                  <svg className="w-5 h-5 text-[#22c55e]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>Industry News</span>
+                </div>
+                <div className="flex items-center gap-2 text-white/70 text-sm">
+                  <svg className="w-5 h-5 text-[#22c55e]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>Tips & Guides</span>
+                </div>
+              </div>
+            </div>
+            <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <p className="text-3xl font-bold text-[#22c55e]">6</p>
+                <p className="text-white/70 text-sm mt-1">Articles Published</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <p className="text-3xl font-bold text-[#22c55e]">4</p>
+                <p className="text-white/70 text-sm mt-1">Topic Categories</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <p className="text-3xl font-bold text-[#22c55e]">Monthly</p>
+                <p className="text-white/70 text-sm mt-1">New Articles</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <p className="text-3xl font-bold text-[#22c55e]">Free</p>
+                <p className="text-white/70 text-sm mt-1">Resource Library</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -151,7 +141,7 @@ export default function BlogPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((article, i) => (
               <Link
-                key={i}
+                key={article.slug}
                 href={`/blog/${article.slug}`}
                 className="blog-card group animate-fade-in-up"
                 style={{ animationDelay: `${i * 0.1}s` }}
@@ -166,7 +156,7 @@ export default function BlogPage() {
                   />
                 </div>
                 <div className="p-6">
-                  <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold text-white ${article.color} mb-3`}>
+                  <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold text-white ${categoryColors[article.category] ?? "bg-gray-600"} mb-3`}>
                     {article.category}
                   </span>
                   <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#1447E6] transition-colors">{article.title}</h3>

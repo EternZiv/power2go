@@ -65,14 +65,63 @@ export default function SolutionsPage() {
   return (
     <>
       <section className="relative overflow-hidden min-h-[100dvh] flex items-center pt-14">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1447E6] via-[#0d1726] to-[#01b0d9]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/40 via-transparent to-transparent" />
+        <Image
+          src={`${basePath}/images/3.jpeg`}
+          alt="Power2Go energy storage solutions overview"
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          priority
+          quality={85}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0d1726]/90 via-[#0d1726]/70 to-[#1447E6]/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/60 via-transparent to-transparent" />
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
           <Breadcrumb items={[{ label: "Solutions" }]} />
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in-left">Our Solutions</h1>
-          <p className="text-white/80 text-lg max-w-2xl animate-fade-in-left delay-100">
-            Tailored energy storage solutions for every application — from homes to industrial facilities.
-          </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in-left">Our Solutions</h1>
+              <p className="text-white/80 text-lg max-w-2xl animate-fade-in-left delay-100 leading-relaxed">
+                Tailored energy storage solutions for every application — from homes to industrial facilities. We design, supply, and support systems that reduce costs, improve reliability, and enable energy independence.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-4 animate-fade-in-left delay-200">
+                <div className="flex items-center gap-2 text-white/70 text-sm">
+                  <svg className="w-5 h-5 text-[#22c55e]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>Residential</span>
+                </div>
+                <div className="flex items-center gap-2 text-white/70 text-sm">
+                  <svg className="w-5 h-5 text-[#22c55e]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>Commercial</span>
+                </div>
+                <div className="flex items-center gap-2 text-white/70 text-sm">
+                  <svg className="w-5 h-5 text-[#22c55e]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>Industrial</span>
+                </div>
+                <div className="flex items-center gap-2 text-white/70 text-sm">
+                  <svg className="w-5 h-5 text-[#22c55e]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>Portable</span>
+                </div>
+              </div>
+            </div>
+            <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <p className="text-3xl font-bold text-[#22c55e]">4</p>
+                <p className="text-white/70 text-sm mt-1">Solution Categories</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <p className="text-3xl font-bold text-[#22c55e]">6</p>
+                <p className="text-white/70 text-sm mt-1">Product Models</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <p className="text-3xl font-bold text-[#22c55e]">20-40%</p>
+                <p className="text-white/70 text-sm mt-1">Cost Reduction</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <p className="text-3xl font-bold text-[#22c55e]">&lt;10ms</p>
+                <p className="text-white/70 text-sm mt-1">Backup Switchover</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

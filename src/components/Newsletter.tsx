@@ -20,9 +20,23 @@ export function Newsletter({ className = "", variant = "dark" }: NewsletterProps
       return;
     }
     setStatus("loading");
-    await new Promise((r) => setTimeout(r, 800));
-    setStatus("success");
-    setEmail("");
+    try {
+      const res = await fetch("https://formspree.io/f/yourNewsletterFormID", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: trimmed }),
+      });
+      if (res.ok) {
+        setStatus("success");
+        setEmail("");
+      } else {
+        setErrorMsg("Subscription failed. Please try again.");
+        setStatus("error");
+      }
+    } catch {
+      setErrorMsg("Network error. Please check your connection.");
+      setStatus("error");
+    }
   };
 
   const isDark = variant === "dark";

@@ -3,7 +3,6 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { basePath } from "@/lib/basePath";
-import { FadeInStagger, FadeInStaggerItem } from "@/components/animations";
 
 const socials = [
   {
@@ -58,10 +57,9 @@ export function Footer() {
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMSIvPjwvZz48L2c+PC9zdmc+')] opacity-40" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative">
-        <FadeInStagger>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
             {/* Brand */}
-            <FadeInStaggerItem className="lg:col-span-3">
+            <div className="lg:col-span-3">
               <Link href="/" className="flex items-center gap-2 mb-5" aria-label="Power2Go Home">
                 <Image src={`${basePath}/logo-light.png`} alt="Power2Go" width={160} height={40} className="h-9 w-auto" />
               </Link>
@@ -93,10 +91,10 @@ export function Footer() {
                   </a>
                 ))}
               </div>
-            </FadeInStaggerItem>
+            </div>
 
             {/* Quick Links */}
-            <FadeInStaggerItem className="lg:col-span-2">
+            <div className="lg:col-span-2">
               <h3 className="text-white font-bold text-base mb-5">Quick Links</h3>
               <ul className="space-y-3" role="list">
                 {quickLinks.map((item) => (
@@ -107,10 +105,10 @@ export function Footer() {
                   </li>
                 ))}
               </ul>
-            </FadeInStaggerItem>
+            </div>
 
             {/* Products */}
-            <FadeInStaggerItem className="lg:col-span-2">
+            <div className="lg:col-span-2">
               <h3 className="text-white font-bold text-base mb-5">Products</h3>
               <ul className="space-y-3" role="list">
                 {productLinks.map((item) => (
@@ -119,10 +117,10 @@ export function Footer() {
                   </li>
                 ))}
               </ul>
-            </FadeInStaggerItem>
+            </div>
 
             {/* Support */}
-            <FadeInStaggerItem className="lg:col-span-2">
+            <div className="lg:col-span-2">
               <h3 className="text-white font-bold text-base mb-5">Support</h3>
               <ul className="space-y-3" role="list">
                 {supportLinks.map((item) => (
@@ -131,10 +129,10 @@ export function Footer() {
                   </li>
                 ))}
               </ul>
-            </FadeInStaggerItem>
+            </div>
 
             {/* Contact */}
-            <FadeInStaggerItem className="lg:col-span-3">
+            <div className="lg:col-span-3">
               <h3 className="text-white font-bold text-base mb-5">Contact</h3>
               <ul className="space-y-4" role="list">
                 <li className="flex gap-3 items-start">
@@ -160,9 +158,8 @@ export function Footer() {
                   <a href="mailto:info@power2go.energy" className="text-white/60 text-sm hover:text-blue-300 transition-colors">info@power2go.energy</a>
                 </li>
               </ul>
-            </FadeInStaggerItem>
+            </div>
           </div>
-        </FadeInStagger>
 
         <div className="gradient-line mb-7 mt-12" />
 

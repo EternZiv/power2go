@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
+import { basePath } from "@/lib/basePath";
 import { Breadcrumb } from "@/components/Breadcrumb";
 
 export const metadata: Metadata = {
@@ -51,14 +53,59 @@ export default function ServicesPage() {
   return (
     <>
       <section className="relative overflow-hidden min-h-[100dvh] flex items-center pt-14">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1447E6] via-[#0d1726] to-[#01b0d9]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/40 via-transparent to-transparent" />
+        <Image
+          src={`${basePath}/images/4.jpeg`}
+          alt="Power2Go professional services and installation"
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          priority
+          quality={85}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0d1726]/90 via-[#0d1726]/70 to-[#1447E6]/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/60 via-transparent to-transparent" />
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
           <Breadcrumb items={[{ label: "Services" }]} />
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in-left">Our Services</h1>
-          <p className="text-white/80 text-lg max-w-2xl animate-fade-in-left delay-100">
-            End-to-end energy storage services from design through installation, monitoring, and ongoing support.
-          </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in-left">Our Services</h1>
+              <p className="text-white/80 text-lg max-w-2xl animate-fade-in-left delay-100 leading-relaxed">
+                End-to-end energy storage services from design through installation, monitoring, and ongoing support. Our certified team ensures your system performs at its best for years to come.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-4 animate-fade-in-left delay-200">
+                <div className="flex items-center gap-2 text-white/70 text-sm">
+                  <svg className="w-5 h-5 text-[#22c55e]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>Certified Engineers</span>
+                </div>
+                <div className="flex items-center gap-2 text-white/70 text-sm">
+                  <svg className="w-5 h-5 text-[#22c55e]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>Same-Day Service</span>
+                </div>
+                <div className="flex items-center gap-2 text-white/70 text-sm">
+                  <svg className="w-5 h-5 text-[#22c55e]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>24/7 Support</span>
+                </div>
+              </div>
+            </div>
+            <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <p className="text-3xl font-bold text-[#22c55e]">6</p>
+                <p className="text-white/70 text-sm mt-1">Service Offerings</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <p className="text-3xl font-bold text-[#22c55e]">500+</p>
+                <p className="text-white/70 text-sm mt-1">Systems Installed</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <p className="text-3xl font-bold text-[#22c55e]">5 Yrs</p>
+                <p className="text-white/70 text-sm mt-1">Warranty Coverage</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <p className="text-3xl font-bold text-[#22c55e]">24/7</p>
+                <p className="text-white/70 text-sm mt-1">Remote Monitoring</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

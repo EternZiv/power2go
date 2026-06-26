@@ -40,16 +40,6 @@ body {
   to   { opacity: 1; }
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-12px); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(20, 71, 230, 0.3); }
-  50%       { box-shadow: 0 0 40px rgba(20, 71, 230, 0.6); }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -59,23 +49,9 @@ body {
   }
 }
 
-@keyframes scale-in {
-  from { opacity: 0; transform: scale(0.85); }
-  to   { opacity: 1; transform: scale(1); }
-}
-
-@keyframes rotate-in {
-  from { opacity: 0; transform: rotate(-6deg) scale(0.95); }
-  to   { opacity: 1; transform: rotate(0) scale(1); }
-}
-
 .animate-fade-in-left  { animation: fadeInLeft 0.7s ease forwards; }
 .animate-fade-in-up    { animation: fadeInUp  0.7s ease forwards; }
 .animate-fade-in       { animation: fadeIn    0.7s ease forwards; }
-.animate-float         { animation: float     3s ease-in-out infinite; }
-.animate-pulse-glow    { animation: pulse-glow 2s ease-in-out infinite; }
-.animate-scale-in      { animation: scale-in 0.6s cubic-bezier(0.21, 0.47, 0.32, 0.98) forwards; }
-.animate-rotate-in     { animation: rotate-in 0.7s cubic-bezier(0.21, 0.47, 0.32, 0.98) forwards; }
 
 .delay-100 { animation-delay: 0.1s; }
 .delay-200 { animation-delay: 0.2s; }
@@ -84,36 +60,6 @@ body {
 .delay-500 { animation-delay: 0.5s; }
 .delay-700 { animation-delay: 0.7s; }
 
-.hero-gradient {
-  background: linear-gradient(135deg, #1447E6 0%, #0ea5e9 50%, #01b0d9 100%);
-}
-
-.hero-overlay {
-  background: linear-gradient(to bottom,
-    rgba(13,23,38,0.55) 0%,
-    rgba(13,23,38,0.25) 60%,
-    rgba(13,23,38,0.0)  100%);
-}
-
-.page-hero {
-  background: linear-gradient(135deg, #0b1322 0%, #1447E6 50%, #01b0d9 100%);
-}
-
-.glass {
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 1rem;
-}
-
-.glass-dark {
-  background: rgba(11, 19, 34, 0.6);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-.bg-section { background-color: #f1f5f9; }
-
 .gradient-line {
   height: 1px;
   background: linear-gradient(90deg,
@@ -121,20 +67,6 @@ body {
     rgba(5,96,225,0.6) 30%,
     rgba(1,176,217,0.6) 70%,
     transparent 100%);
-}
-
-.text-gradient {
-  background: linear-gradient(135deg, #1447E6, #01b0d9);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.text-gradient-green {
-  background: linear-gradient(135deg, #22c55e, #01b0d9);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .nav-link {

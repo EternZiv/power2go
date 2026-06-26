@@ -1,7 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { basePath } from "@/lib/basePath";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
+const CONTACT_FORM_URL = "https://formspree.io/f/yourFormID";
 const contactCards = [
   {
     icon: (
@@ -12,8 +16,8 @@ const contactCards = [
     ),
     title: "Visit Us",
     lines: [
-      { bold: "Karachi Office:", text: "1D-27 Sector 30, Korangi Industrial Area, Karachi, Pakistan" },
-      { bold: "Lahore Office:", text: "10 Ali Block Garden Town, Lahore" },
+      { bold: "Karachi Office:", text: "1D-27 Sector 30, Korangi Industrial Area, Karachi" },
+      { bold: "Lahore Office:", text: "10 Ali Block, Garden Town, Lahore" },
     ],
   },
   {
@@ -36,8 +40,8 @@ const contactCards = [
     ),
     title: "Email Us",
     lines: [
-      { bold: "Support:", text: "info@power2go.energy" },
-      { bold: "Sales:", text: "sales@power2go.energy" },
+      { bold: "Support:", text: "info@power2go.com.pk" },
+      { bold: "Sales:", text: "sales@power2go.com.pk" },
     ],
   },
   {
@@ -50,7 +54,7 @@ const contactCards = [
     title: "Office Hours",
     lines: [
       { bold: "Mon–Fri:", text: "9:00 AM – 6:00 PM" },
-      { bold: "Saturday:", text: "9:00 AM – 2:00 PM" },
+      { bold: "Saturday:", text: "10:00 AM – 4:00 PM" },
     ],
   },
 ];
@@ -61,12 +65,14 @@ const locations = [
     address: "1D-27 Sector 30, Korangi Industrial Area, Karachi",
     phone: "111-P2G-247",
     mapUrl: "https://maps.google.com/?q=1D-27+Sector+30+Korangi+Industrial+Area+Karachi",
+    embedUrl: "https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_KEY&q=1D-27+Sector+30+Korangi+Industrial+Area+Karachi",
   },
   {
     city: "Lahore",
-    address: "10 Ali Block Garden Town, Lahore",
+    address: "10 Ali Block, Garden Town, Lahore",
     phone: "(042) 3591 1165-69",
     mapUrl: "https://maps.google.com/?q=10+Ali+Block+Garden+Town+Lahore",
+    embedUrl: "https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_KEY&q=10+Ali+Block+Garden+Town+Lahore",
   },
 ];
 
@@ -74,15 +80,31 @@ export default function ContactPage() {
   const [form, setForm] = useState({
     name: "", email: "", phone: "", subject: "", message: ""
   });
-  const [submitted, setSubmitted] = useState(false);
-  const [sending, setSending] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSending(true);
-    await new Promise((r) => setTimeout(r, 1000));
-    setSending(false);
-    setSubmitted(true);
+    setStatus("sending");
+    setErrorMsg("");
+
+    try {
+      const res = await fetch(CONTACT_FORM_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setStatus("success");
+        setForm({ name: "", email: "", phone: "", subject: "", message: "" });
+      } else {
+        setErrorMsg("Failed to send. Please try again or email us directly.");
+        setStatus("error");
+      }
+    } catch {
+      setErrorMsg("Network error. Please check your connection and try again.");
+      setStatus("error");
+    }
   };
 
   const phoneLink = (text: string) => {
@@ -93,13 +115,59 @@ export default function ContactPage() {
   return (
     <>
       <section className="relative overflow-hidden min-h-[100dvh] flex items-center pt-14">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1447E6] via-[#0d1726] to-[#01b0d9]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/40 via-transparent to-transparent" />
+        <Image
+          src={`${basePath}/images/7.jpeg`}
+          alt="Power2Go contact and support team"
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          priority
+          quality={85}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0d1726]/90 via-[#0d1726]/70 to-[#1447E6]/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/60 via-transparent to-transparent" />
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in-left">Contact Us</h1>
-          <p className="text-white/80 text-lg max-w-xl animate-fade-in-left delay-100">
-            Get in touch with our team. We&apos;re here to answer your questions and help you find the perfect energy solution.
-          </p>
+          <Breadcrumb items={[{ label: "Contact Us" }]} />
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in-left">Contact Us</h1>
+              <p className="text-white/80 text-lg max-w-xl animate-fade-in-left delay-100 leading-relaxed">
+                Get in touch with our team. We&apos;re here to answer your questions, provide quotations, and help you find the perfect energy solution for your needs.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-4 animate-fade-in-left delay-200">
+                <div className="flex items-center gap-2 text-white/70 text-sm">
+                  <svg className="w-5 h-5 text-[#22c55e]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>24h Response Time</span>
+                </div>
+                <div className="flex items-center gap-2 text-white/70 text-sm">
+                  <svg className="w-5 h-5 text-[#22c55e]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>Free Consultation</span>
+                </div>
+                <div className="flex items-center gap-2 text-white/70 text-sm">
+                  <svg className="w-5 h-5 text-[#22c55e]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>Pan-Pakistan Support</span>
+                </div>
+              </div>
+            </div>
+            <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <p className="text-3xl font-bold text-[#22c55e]">2</p>
+                <p className="text-white/70 text-sm mt-1">Office Locations</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <p className="text-3xl font-bold text-[#22c55e]">111</p>
+                <p className="text-white/70 text-sm mt-1">P2G-247 Hotline</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <p className="text-3xl font-bold text-[#22c55e]">Mon-Sat</p>
+                <p className="text-white/70 text-sm mt-1">Business Hours</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <p className="text-3xl font-bold text-[#22c55e]">WhatsApp</p>
+                <p className="text-white/70 text-sm mt-1">Quick Chat</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -139,7 +207,7 @@ export default function ContactPage() {
               <h2 className="text-2xl font-bold text-gray-900 mb-2">Send Us a Message</h2>
               <p className="text-gray-500 text-sm mb-8">Fill out the form and we&apos;ll get back to you within 24 hours.</p>
 
-              {submitted ? (
+              {status === "success" ? (
                 <div className="bg-green-50 border border-green-100 rounded-2xl p-8 text-center">
                   <div className="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
                     <svg className="w-7 h-7 text-green-600" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
@@ -213,10 +281,10 @@ export default function ContactPage() {
                   </div>
                   <button
                     type="submit"
-                    disabled={sending}
+                    disabled={status === "sending"}
                     className="btn-primary w-full justify-center mt-2"
                   >
-                    {sending ? (
+                    {status === "sending" ? (
                       <>
                         <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                           <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" className="opacity-25" />
@@ -233,6 +301,9 @@ export default function ContactPage() {
                       </>
                     )}
                   </button>
+                  {status === "error" && (
+                    <p className="text-red-500 text-sm text-center">{errorMsg}</p>
+                  )}
                 </form>
               )}
             </div>
@@ -241,20 +312,16 @@ export default function ContactPage() {
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Our Locations</h2>
 
               <div className="rounded-2xl overflow-hidden border border-gray-200 h-48 mb-6 bg-gray-100 relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <svg className="w-8 h-8 text-gray-300 mx-auto mb-2" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/>
-                      <circle cx="12" cy="10" r="3"/>
-                    </svg>
-                    <p className="text-gray-400 text-sm font-medium">Map Integration</p>
-                    <p className="text-gray-300 text-xs mt-0.5">Karachi &amp; Lahore Offices</p>
-                  </div>
-                </div>
-                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMjAgMjBhMTAgMTAgMCAwIDEtMTAgMTAgMTAgMTAgMCAwIDEgMTAtMTAgMTAgMTAgMCAwIDEgMTAtMTAgMTAgMTAgMCAwIDEtMTAgMTB6IiBmaWxsPSIjMTQ0N0U2IiBmaWxsLW9wYWNpdHk9IjAuMDYiLz48L3N2Zz4=')] opacity-30" />
+                <iframe
+                  title="Karachi Office Location"
+                  src={locations[0].embedUrl}
+                  className="absolute inset-0 w-full h-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
               </div>
 
-              {/* WhatsApp */}
               <a
                 href="https://wa.me/92111247247"
                 target="_blank"
@@ -275,7 +342,6 @@ export default function ContactPage() {
                 </svg>
               </a>
 
-              {/* Support Email */}
               <div className="flex items-center gap-3 px-5 py-3 rounded-xl bg-blue-50 border border-blue-100 mb-6">
                 <div className="w-10 h-10 rounded-full bg-[#1447E6] flex items-center justify-center flex-shrink-0">
                   <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
@@ -284,7 +350,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-gray-900">Support Email</p>
-                  <a href="mailto:support@power2go.energy" className="text-xs text-[#1447E6] hover:underline">support@power2go.energy</a>
+                  <a href="mailto:info@power2go.com.pk" className="text-xs text-[#1447E6] hover:underline">info@power2go.com.pk</a>
                 </div>
               </div>
 
