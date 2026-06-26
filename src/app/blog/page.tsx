@@ -25,7 +25,7 @@ export default function BlogPage() {
     <>
       <section className="relative overflow-hidden min-h-[100dvh] flex items-center pt-14">
         <Image
-          src={`${basePath}/images/6.jpeg`}
+          src={`${basePath}/images/6.png`}
           alt="Power2Go blog - energy storage insights and guides"
           fill
           className="object-cover object-center"

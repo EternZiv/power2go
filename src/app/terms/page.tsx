@@ -14,7 +14,7 @@ export default function TermsPage() {
     <>
       <section className="relative overflow-hidden min-h-[60vh] flex items-center pt-14">
         <Image
-          src={`${basePath}/images/10.jpeg`}
+          src={`${basePath}/images/10.png`}
           alt="Power2Go terms of service"
           fill
           className="object-cover object-center"

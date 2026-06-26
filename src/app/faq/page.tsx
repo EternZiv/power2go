@@ -52,7 +52,7 @@ export default function FAQPage() {
     <>
       <section className="relative overflow-hidden min-h-[100dvh] flex items-center pt-14">
         <Image
-          src={`${basePath}/images/8.jpeg`}
+          src={`${basePath}/images/8.png`}
           alt="Power2Go frequently asked questions"
           fill
           className="object-cover object-center"

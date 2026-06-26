@@ -36,7 +36,7 @@ export default function AboutPage() {
     <>
       <section className="relative overflow-hidden min-h-[100dvh] flex items-center pt-14">
         <Image
-          src={`${basePath}/images/2.jpeg`}
+          src={`${basePath}/images/2.png`}
           alt="Power2Go team and energy storage solutions"
           fill
           className="object-cover object-center"

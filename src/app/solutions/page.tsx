@@ -66,7 +66,7 @@ export default function SolutionsPage() {
     <>
       <section className="relative overflow-hidden min-h-[100dvh] flex items-center pt-14">
         <Image
-          src={`${basePath}/images/3.jpeg`}
+          src={`${basePath}/images/3.png`}
           alt="Power2Go energy storage solutions overview"
           fill
           className="object-cover object-center"

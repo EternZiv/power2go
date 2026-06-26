@@ -54,7 +54,7 @@ export default function ServicesPage() {
     <>
       <section className="relative overflow-hidden min-h-[100dvh] flex items-center pt-14">
         <Image
-          src={`${basePath}/images/4.jpeg`}
+          src={`${basePath}/images/4.png`}
           alt="Power2Go professional services and installation"
           fill
           className="object-cover object-center"

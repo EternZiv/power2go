@@ -127,7 +127,7 @@ export default function HomePage() {
     <>
       <section className="relative overflow-hidden min-h-[100dvh] flex items-center">
         <Image
-          src={`${basePath}/images/1.jpeg`}
+          src={`${basePath}/images/1.png`}
           alt="Wind turbines and solar panels at sunset representing clean energy"
           fill
           className="object-cover object-center"

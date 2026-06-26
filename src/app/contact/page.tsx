@@ -116,7 +116,7 @@ export default function ContactPage() {
     <>
       <section className="relative overflow-hidden min-h-[100dvh] flex items-center pt-14">
         <Image
-          src={`${basePath}/images/7.jpeg`}
+          src={`${basePath}/images/7.png`}
           alt="Power2Go contact and support team"
           fill
           className="object-cover object-center"

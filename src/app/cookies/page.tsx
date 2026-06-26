@@ -14,7 +14,7 @@ export default function CookiesPage() {
     <>
       <section className="relative overflow-hidden min-h-[60vh] flex items-center pt-14">
         <Image
-          src={`${basePath}/images/11.jpeg`}
+          src={`${basePath}/images/11.png`}
           alt="Power2Go cookie policy"
           fill
           className="object-cover object-center"

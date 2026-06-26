@@ -17,7 +17,7 @@ export default function ProductsPage() {
     <>
       <section className="relative overflow-hidden min-h-[100dvh] flex items-center pt-14">
         <Image
-          src={`${basePath}/images/5.jpeg`}
+          src={`${basePath}/images/5.png`}
           alt="Power2Go product range - energy storage systems"
           fill
           className="object-cover object-center"

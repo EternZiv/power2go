@@ -14,7 +14,7 @@ export default function PrivacyPage() {
     <>
       <section className="relative overflow-hidden min-h-[60vh] flex items-center pt-14">
         <Image
-          src={`${basePath}/images/9.jpeg`}
+          src={`${basePath}/images/9.png`}
           alt="Power2Go privacy policy"
           fill
           className="object-cover object-center"
