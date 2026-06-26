@@ -4,6 +4,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { products, getProductBySlug } from "@/lib/products";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -33,10 +34,8 @@ export default async function ProductDetailPage({ params }: Props) {
       <section className="relative overflow-hidden min-h-[100dvh] flex items-center">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1447E6] via-[#0d1726] to-[#01b0d9]" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/40 via-transparent to-transparent pointer-events-none" />
-        <div className="absolute right-[-60px] top-10 h-72 w-72 rounded-full bg-[#1447E6]/30 blur-3xl animate-pulse" />
-        <div className="absolute left-[-60px] bottom-0 h-60 w-60 rounded-full bg-[#01b0d9]/20 blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
-
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+          <Breadcrumb items={[{ label: "Products", href: "/products" }, { label: product.name }]} className="[&_*]:text-white/60" />
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="animate-fade-in-left">
               <Link href="/products" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm mb-4 transition-colors">

@@ -3,9 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { basePath } from "@/lib/basePath";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
 export const metadata: Metadata = {
-  title: "Solutions | Power2Go – Energy Storage for Every Need",
+  title: "Solutions",
   description: "Discover Power2Go's energy storage solutions for residential, commercial, industrial, and portable applications across Pakistan.",
 };
 
@@ -63,12 +64,11 @@ const solutions = [
 export default function SolutionsPage() {
   return (
     <>
-      <section className="relative overflow-hidden min-h-[320px] md:min-h-[340px] flex items-center pt-14">
+      <section className="relative overflow-hidden min-h-[100dvh] flex items-center pt-14">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1447E6] via-[#0d1726] to-[#01b0d9]" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/40 via-transparent to-transparent" />
-        <div className="absolute right-[-80px] top-10 h-72 w-72 rounded-full bg-[#1447E6]/30 blur-3xl animate-pulse" />
-        <div className="absolute left-[-60px] bottom-0 h-60 w-60 rounded-full bg-[#01b0d9]/20 blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
+          <Breadcrumb items={[{ label: "Solutions" }]} />
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in-left">Our Solutions</h1>
           <p className="text-white/80 text-lg max-w-2xl animate-fade-in-left delay-100">
             Tailored energy storage solutions for every application — from homes to industrial facilities.

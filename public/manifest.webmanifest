@@ -1,0 +1,21 @@
+{
+  "name": "Power2Go – Advanced Energy Storage Solutions",
+  "short_name": "Power2Go",
+  "description": "Leading manufacturer of advanced battery storage systems for residential, commercial, and industrial applications in Pakistan.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1447E6",
+  "icons": [
+    {
+      "src": "/logo-light.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo-light.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

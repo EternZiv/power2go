@@ -1,12 +1,15 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { basePath } from "@/lib/basePath";
 import { ProductCardGrid } from "@/components/ProductCardGrid";
+import { Testimonials } from "@/components/Testimonials";
+import { Newsletter } from "@/components/Newsletter";
 
 const solutions = [
   {
     icon: (
-      <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" strokeWidth={1.75} viewBox="0 0 24 24">
+      <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" strokeWidth={1.75} viewBox="0 0 24 24" aria-hidden="true">
         <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/>
         <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
       </svg>
@@ -14,20 +17,22 @@ const solutions = [
     bg: "bg-blue-100",
     title: "Residential",
     desc: "Complete home energy storage systems for energy independence",
+    href: "/solutions#residential",
   },
   {
     icon: (
-      <svg className="w-7 h-7 text-green-600" fill="none" stroke="currentColor" strokeWidth={1.75} viewBox="0 0 24 24">
+      <svg className="w-7 h-7 text-green-600" fill="none" stroke="currentColor" strokeWidth={1.75} viewBox="0 0 24 24" aria-hidden="true">
         <path d="M10 12h4M10 8h4M14 21v-3a2 2 0 0 0-4 0v3M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/>
       </svg>
     ),
     bg: "bg-green-100",
     title: "Commercial",
     desc: "Scalable energy storage for businesses and offices",
+    href: "/solutions#commercial",
   },
   {
     icon: (
-      <svg className="w-7 h-7 text-purple-600" fill="none" stroke="currentColor" strokeWidth={1.75} viewBox="0 0 24 24">
+      <svg className="w-7 h-7 text-purple-600" fill="none" stroke="currentColor" strokeWidth={1.75} viewBox="0 0 24 24" aria-hidden="true">
         <path d="M12 16h.01M16 16h.01M3 19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 15 10.5v-2a.5.5 0 0 0-.769-.422L9.77 10.922A.5.5 0 0 1 9 10.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"/>
         <path d="M8 16h.01"/>
       </svg>
@@ -35,16 +40,18 @@ const solutions = [
     bg: "bg-purple-100",
     title: "Industrial",
     desc: "High-capacity solutions for industrial operations",
+    href: "/solutions#industrial",
   },
   {
     icon: (
-      <svg className="w-7 h-7 text-orange-600" fill="none" stroke="currentColor" strokeWidth={1.75} viewBox="0 0 24 24">
+      <svg className="w-7 h-7 text-orange-600" fill="none" stroke="currentColor" strokeWidth={1.75} viewBox="0 0 24 24" aria-hidden="true">
         <path d="M22 14L22 10"/><rect x="2" y="6" width="16" height="12" rx="2"/>
       </svg>
     ),
     bg: "bg-orange-100",
     title: "Portable",
     desc: "Flexible battery modules for custom configurations",
+    href: "/solutions#portable",
   },
 ];
 
@@ -119,19 +126,22 @@ export default function HomePage() {
   return (
     <>
       <section className="relative overflow-hidden min-h-[100dvh] flex items-center">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1800&q=80')" }}
+        <Image
+          src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1800&q=80"
+          alt="Wind turbines and solar panels at sunset representing clean energy"
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          priority
+          quality={85}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/30" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/60 via-transparent to-transparent pointer-events-none" />
-        <div className="absolute right-[-60px] top-24 h-96 w-96 rounded-full bg-[#1447E6]/20 blur-3xl animate-pulse" />
-        <div className="absolute left-[-60px] bottom-0 h-80 w-80 rounded-full bg-[#01b0d9]/10 blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-40">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs sm:text-sm font-medium tracking-wider shadow-md animate-fade-in-left">
-              <span className="w-2 h-2 rounded-full bg-[#22c55e] animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-[#22c55e]" aria-hidden="true" />
               Advanced Energy Storage Solutions
             </div>
 
@@ -147,7 +157,7 @@ export default function HomePage() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4 animate-fade-in-left delay-300">
               <Link href="/products" className="btn-primary group">
                 Explore Products
-                <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </Link>
               <Link href="/contact" className="btn-outline">
                 Get In Touch
@@ -155,17 +165,15 @@ export default function HomePage() {
             </div>
 
             <div className="mt-12 flex items-center gap-8 text-white/50 text-xs animate-fade-in-left delay-500">
-              <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#22c55e]" /> CE Certified</span>
-              <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#22c55e]" /> UL Listed</span>
-              <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#22c55e]" /> IEC Compliant</span>
+              <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#22c55e]" aria-hidden="true" /> CE Certified</span>
+              <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#22c55e]" aria-hidden="true" /> UL Listed</span>
+              <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#22c55e]" aria-hidden="true" /> IEC Compliant</span>
             </div>
           </div>
         </div>
       </section>
 
       <section className="py-20 bg-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#1447E6]/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#01b0d9]/5 rounded-full blur-3xl" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center max-w-3xl mx-auto mb-14 animate-fade-in-up">
             <span className="text-[#1447E6] font-semibold text-sm tracking-widest uppercase mb-3 block">What We Offer</span>
@@ -176,7 +184,13 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {solutions.map((sol, i) => (
-              <div key={i} className="sol-card cursor-pointer group animate-fade-in-up" style={{ animationDelay: `${i * 0.1}s` }}>
+              <Link
+                key={i}
+                href={sol.href}
+                className="sol-card group animate-fade-in-up"
+                style={{ animationDelay: `${i * 0.1}s` }}
+                aria-label={`Learn more about ${sol.title} solutions`}
+              >
                 <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-6 ${sol.bg} transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg`}>
                   {sol.icon}
                 </div>
@@ -184,16 +198,15 @@ export default function HomePage() {
                 <p className="text-slate-500 text-sm leading-6">{sol.desc}</p>
                 <div className="mt-4 flex items-center gap-1 text-[#1447E6] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   Learn more
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
       <section className="bg-[#0d1726] py-12 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMSIvPjwvZz48L2c+PC9zdmc+')] opacity-40" />
         <div className="gradient-line absolute top-0 inset-x-0" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -222,7 +235,7 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 px-8 py-2.5 border border-gray-300 text-gray-700 font-semibold rounded-xl hover:shadow-lg hover:shadow-gray-200 transition-all duration-300 group"
             >
               Browse All Products
-              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </Link>
@@ -231,8 +244,6 @@ export default function HomePage() {
       </section>
 
       <section className="py-24 bg-white relative overflow-hidden">
-        <div className="absolute top-1/2 left-0 w-64 h-64 bg-[#1447E6]/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#01b0d9]/5 rounded-full blur-3xl" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center mb-16 animate-fade-in-up">
             <span className="text-[#1447E6] font-semibold text-sm tracking-widest uppercase mb-3 block">Why Us</span>
@@ -243,7 +254,7 @@ export default function HomePage() {
             {features.map((f, i) => (
               <div key={i} className="feature-card group animate-fade-in-up" style={{ animationDelay: `${i * 0.1}s` }}>
                 <div className="flex items-start gap-4">
-                  <div className={`bg-gradient-to-br ${f.gradient} flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-white text-xl shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}>
+                  <div className={`bg-gradient-to-br ${f.gradient} flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-white text-xl shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`} aria-hidden="true">
                     {f.icon}
                   </div>
                   <div>
@@ -257,10 +268,12 @@ export default function HomePage() {
         </div>
       </section>
 
+      <Testimonials />
+
+      <Newsletter variant="light" className="py-16 bg-gray-50" />
+
       <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1447E6] via-[#0d1726] to-[#01b0d9] opacity-95" />
-        <div className="absolute top-[-100px] right-[-100px] w-[400px] h-[400px] rounded-full bg-white/5 blur-3xl" />
-        <div className="absolute bottom-[-100px] left-[-100px] w-[300px] h-[300px] rounded-full bg-[#22c55e]/10 blur-3xl" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 animate-fade-in-up">Ready to Power Your Future?</h2>
           <p className="text-white/80 text-lg mb-10 max-w-2xl mx-auto animate-fade-in-up delay-100">
@@ -269,10 +282,10 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-200">
             <Link href="/products" className="inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl hover:shadow-black/20 transition-all duration-200">
               View Products
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </Link>
             <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-3 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white transition-all duration-200">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
               Call Us Now
             </Link>
           </div>

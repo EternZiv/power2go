@@ -3,9 +3,10 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { basePath } from "@/lib/basePath";
 import { ProductCardGrid } from "@/components/ProductCardGrid";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
 export const metadata: Metadata = {
-  title: "Products | Power2Go – Battery Storage Systems",
+  title: "Products",
   description: "Explore our full range of energy storage systems: residential, commercial, industrial, portable, and monitoring solutions.",
 };
 
@@ -107,12 +108,11 @@ const categories = ["All", "Residential", "Commercial", "Industrial", "Portable"
 export default function ProductsPage() {
   return (
     <>
-      <section className="relative overflow-hidden min-h-[320px] md:min-h-[340px] flex items-center pt-14">
+      <section className="relative overflow-hidden min-h-[100dvh] flex items-center pt-14">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1447E6] via-[#0d1726] to-[#01b0d9]" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/40 via-transparent to-transparent" />
-        <div className="absolute right-[-80px] top-10 h-72 w-72 rounded-full bg-[#1447E6]/30 blur-3xl animate-pulse" />
-        <div className="absolute left-[-60px] bottom-0 h-60 w-60 rounded-full bg-[#01b0d9]/20 blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
+          <Breadcrumb items={[{ label: "Products" }]} />
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in-left">
             Our Products
           </h1>

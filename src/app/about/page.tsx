@@ -1,9 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
 export const metadata: Metadata = {
-  title: "About Us | Power2Go – Leading Energy Storage Manufacturer",
+  title: "About Us",
   description: "Learn about Power2Go's mission, vision, core values, parent companies, and our journey in providing advanced energy storage solutions.",
 };
 
@@ -31,12 +32,11 @@ const stats = [
 export default function AboutPage() {
   return (
     <>
-      <section className="relative overflow-hidden min-h-[320px] md:min-h-[340px] flex items-center pt-14">
+      <section className="relative overflow-hidden min-h-[100dvh] flex items-center pt-14">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1447E6] via-[#0d1726] to-[#01b0d9]" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/40 via-transparent to-transparent" />
-        <div className="absolute right-[-80px] top-10 h-72 w-72 rounded-full bg-[#1447E6]/30 blur-3xl animate-pulse" />
-        <div className="absolute left-[-60px] bottom-0 h-60 w-60 rounded-full bg-[#01b0d9]/20 blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
+          <Breadcrumb items={[{ label: "About Us" }]} />
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in-left">
             About <span className="text-[#22c55e]">Power</span>2Go
           </h1>
@@ -178,7 +178,7 @@ export default function AboutPage() {
             Discover how Power2Go is leading the transition to clean, reliable energy across Pakistan.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-200">
-            <Link href="/about" className="inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl hover:shadow-black/20 transition-all duration-200">
+            <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl hover:shadow-black/20 transition-all duration-200">
               Stay Updated
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </Link>
