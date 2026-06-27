@@ -185,7 +185,6 @@ body {
 .sol-card:hover {
   border-color: #bfdbfe;
   box-shadow: 0 12px 40px rgba(20,71,230,0.12);
-  transform: translateY(-4px);
 }
 .sol-card:hover::before {
   transform: scaleX(1);

@@ -244,13 +244,12 @@ export default function HomePage() {
               Choose from our comprehensive range of battery storage systems designed to meet your specific energy needs
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 perspective-1000">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {solutions.map((sol, i) => (
-              <TiltCard key={i} tiltDegree={5} glare={false}>
               <Link
+                key={i}
                 href={sol.href}
-                className="sol-card group animate-fade-in-up"
-                style={{ animationDelay: `${i * 0.1}s` }}
+                className="sol-card group"
                 aria-label={`Learn more about ${sol.title} solutions`}
               >
                 <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-6 ${sol.bg} transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg`}>
@@ -263,7 +262,6 @@ export default function HomePage() {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </div>
               </Link>
-              </TiltCard>
             ))}
           </div>
         </div>

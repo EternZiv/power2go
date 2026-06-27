@@ -61,7 +61,7 @@ export function Footer() {
             {/* Brand */}
             <div className="lg:col-span-3">
               <Link href="/" className="flex items-center gap-2 mb-5" aria-label="Power2Go Home">
-                <Image src={`${basePath}/logo-light.png`} alt="Power2Go" width={160} height={40} className="h-9 w-auto" />
+                <Image src={`${basePath}/logo-dark.png`} alt="Power2Go" width={160} height={40} className="h-9 w-auto" />
               </Link>
               <p className="text-white/50 text-sm leading-relaxed mb-6">
                 Power2Go is Pakistan&apos;s leading manufacturer of advanced energy storage solutions, powering homes, businesses, and industries with clean, reliable energy.

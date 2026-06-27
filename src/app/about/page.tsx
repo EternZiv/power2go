@@ -74,23 +74,23 @@ export default function AboutPage() {
                 </div>
               </div>
             </div>
-            <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300">
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">4</p>
+            <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300 perspective-1000">
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={2}><p className="text-3xl font-bold text-[#22c55e]">4</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Office Locations</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">50+</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={2.5}><p className="text-3xl font-bold text-[#22c55e]">50+</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Team Members</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">3</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={3}><p className="text-3xl font-bold text-[#22c55e]">3</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Parent Companies</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">100%</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={3.5}><p className="text-3xl font-bold text-[#22c55e]">100%</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Local Support</p>
-              </div>
+              </div></TiltCard>
             </div>
           </div>
         </div>
