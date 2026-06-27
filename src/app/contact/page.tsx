@@ -4,6 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { basePath } from "@/lib/basePath";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { TiltCard } from "@/components/TiltCard";
+import { Floating3D } from "@/components/Floating3D";
+import { ScrollReveal3D } from "@/components/ScrollReveal3D";
 
 const CONTACT_FORM_URL = "https://formspree.io/f/yourFormID";
 const contactCards = [
@@ -149,23 +152,23 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
-            <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300">
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">2</p>
+            <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300 perspective-1000">
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={2}><p className="text-3xl font-bold text-[#22c55e]">2</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Office Locations</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">111</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={2.5}><p className="text-3xl font-bold text-[#22c55e]">111</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">P2G-247 Hotline</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">Mon-Sat</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={3}><p className="text-3xl font-bold text-[#22c55e]">Mon-Sat</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Business Hours</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">WhatsApp</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={3.5}><p className="text-3xl font-bold text-[#22c55e]">WhatsApp</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Quick Chat</p>
-              </div>
+              </div></TiltCard>
             </div>
           </div>
         </div>
@@ -173,8 +176,10 @@ export default function ContactPage() {
 
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 perspective-1000">
             {contactCards.map((card, i) => (
+              <ScrollReveal3D key={i} direction="up" delay={i * 100}>
+              <TiltCard tiltDegree={5} glare={false}>
               <div key={i} className="flex flex-col gap-3 p-6 rounded-2xl border border-gray-100 hover:shadow-md hover:border-gray-200 transition-all duration-300 animate-fade-in-up" style={{ animationDelay: `${i * 0.1}s` }}>
                 <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center">
                   {card.icon}
@@ -195,6 +200,8 @@ export default function ContactPage() {
                   ))}
                 </div>
               </div>
+              </TiltCard>
+              </ScrollReveal3D>
             ))}
           </div>
         </div>
@@ -387,11 +394,11 @@ export default function ContactPage() {
             Explore our range of energy storage solutions or speak with our sales team today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-200">
-            <Link href="/products" className="inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl hover:shadow-black/20 transition-all duration-200">
+            <Link href="/products" className="btn-3d inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl hover:shadow-black/20 transition-all duration-200">
               View Products
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </Link>
-            <a href="tel:111-P2G-247" className="inline-flex items-center gap-2 px-8 py-3 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white transition-all duration-200">
+            <a href="tel:111-P2G-247" className="btn-3d inline-flex items-center gap-2 px-8 py-3 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white transition-all duration-200">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
               Call Us Now
             </a>

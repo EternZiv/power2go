@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { QuickView } from "@/components/QuickView";
+import { TiltCard } from "@/components/TiltCard";
 
 interface ProductItem {
   slug: string;
@@ -29,10 +30,10 @@ export function ProductCardGrid({ products, columns = 4 }: ProductCardGridProps)
 
   return (
     <>
-      <div className={`grid grid-cols-1 sm:grid-cols-2 ${columns === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4"} gap-8 mb-12`}>
+      <div className={`grid grid-cols-1 sm:grid-cols-2 ${columns === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4"} gap-8 mb-12 perspective-1000`}>
         {products.map((p, i) => (
+          <TiltCard key={i} tiltDegree={5} glare={true}>
           <div
-            key={i}
             className="product-card group cursor-pointer animate-fade-in-up"
             style={{ animationDelay: `${i * 0.12}s` }}
             onClick={() => router.push(`/products/${p.slug}`)}
@@ -103,6 +104,7 @@ export function ProductCardGrid({ products, columns = 4 }: ProductCardGridProps)
               </span>
             </div>
           </div>
+          </TiltCard>
         ))}
       </div>
 

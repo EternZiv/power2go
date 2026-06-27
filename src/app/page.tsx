@@ -5,6 +5,9 @@ import { basePath } from "@/lib/basePath";
 import { ProductCardGrid } from "@/components/ProductCardGrid";
 import { Testimonials } from "@/components/Testimonials";
 import { Newsletter } from "@/components/Newsletter";
+import { TiltCard } from "@/components/TiltCard";
+import { Floating3D } from "@/components/Floating3D";
+import { ScrollReveal3D } from "@/components/ScrollReveal3D";
 
 const solutions = [
   {
@@ -175,13 +178,13 @@ export default function HomePage() {
               </div>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-4 animate-fade-in-left delay-300">
-                <Link href="/products" className="btn-primary group">
-                  Explore Products
-                  <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </Link>
-                <Link href="/contact" className="btn-outline">
-                  Get In Touch
-                </Link>
+              <Link href="/products" className="btn-primary btn-3d group">
+                Explore Products
+                <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </Link>
+              <Link href="/contact" className="btn-outline btn-3d">
+                Get In Touch
+              </Link>
               </div>
 
               <div className="mt-12 flex items-center gap-6 text-white/50 text-xs animate-fade-in-left delay-500">
@@ -193,23 +196,39 @@ export default function HomePage() {
             </div>
 
             <div className="hidden lg:flex flex-col gap-4 animate-fade-in-right delay-300">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                  <p className="text-3xl font-bold text-[#22c55e]">15+</p>
-                  <p className="text-white/70 text-sm mt-1">Years Experience</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                  <p className="text-3xl font-bold text-[#22c55e]">500+</p>
-                  <p className="text-white/70 text-sm mt-1">Systems Deployed</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                  <p className="text-3xl font-bold text-[#22c55e]">50MW+</p>
-                  <p className="text-white/70 text-sm mt-1">Installed Capacity</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                  <p className="text-3xl font-bold text-[#22c55e]">98%</p>
-                  <p className="text-white/70 text-sm mt-1">Client Satisfaction</p>
-                </div>
+              <div className="grid grid-cols-2 gap-4 perspective-1000">
+                <TiltCard tiltDegree={5} glare={false}>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                    <Floating3D amplitude={3} speed={2}>
+                    <p className="text-3xl font-bold text-[#22c55e]">15+</p>
+                    </Floating3D>
+                    <p className="text-white/70 text-sm mt-1">Years Experience</p>
+                  </div>
+                </TiltCard>
+                <TiltCard tiltDegree={5} glare={false}>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                    <Floating3D amplitude={3} speed={2.5}>
+                    <p className="text-3xl font-bold text-[#22c55e]">500+</p>
+                    </Floating3D>
+                    <p className="text-white/70 text-sm mt-1">Systems Deployed</p>
+                  </div>
+                </TiltCard>
+                <TiltCard tiltDegree={5} glare={false}>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                    <Floating3D amplitude={3} speed={3}>
+                    <p className="text-3xl font-bold text-[#22c55e]">50MW+</p>
+                    </Floating3D>
+                    <p className="text-white/70 text-sm mt-1">Installed Capacity</p>
+                  </div>
+                </TiltCard>
+                <TiltCard tiltDegree={5} glare={false}>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                    <Floating3D amplitude={3} speed={3.5}>
+                    <p className="text-3xl font-bold text-[#22c55e]">98%</p>
+                    </Floating3D>
+                    <p className="text-white/70 text-sm mt-1">Client Satisfaction</p>
+                  </div>
+                </TiltCard>
               </div>
             </div>
           </div>
@@ -225,10 +244,10 @@ export default function HomePage() {
               Choose from our comprehensive range of battery storage systems designed to meet your specific energy needs
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 perspective-1000">
             {solutions.map((sol, i) => (
+              <TiltCard key={i} tiltDegree={5} glare={false}>
               <Link
-                key={i}
                 href={sol.href}
                 className="sol-card group animate-fade-in-up"
                 style={{ animationDelay: `${i * 0.1}s` }}
@@ -244,6 +263,7 @@ export default function HomePage() {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </div>
               </Link>
+              </TiltCard>
             ))}
           </div>
         </div>
@@ -293,9 +313,11 @@ export default function HomePage() {
             <h2 className="text-3xl md:text-[36px] font-bold text-gray-900 mb-4">Why Choose Power2Go</h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">Industry-leading technology and innovation for reliable energy storage</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 perspective-1000">
             {features.map((f, i) => (
-              <div key={i} className="feature-card group animate-fade-in-up" style={{ animationDelay: `${i * 0.1}s` }}>
+              <ScrollReveal3D key={i} direction={i % 2 === 0 ? "up" : "right"} delay={i * 100}>
+              <TiltCard tiltDegree={4} glare={false}>
+              <div className="feature-card group" style={{ animationDelay: `${i * 0.1}s` }}>
                 <div className="flex items-start gap-4">
                   <div className={`bg-gradient-to-br ${f.gradient} flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-white text-xl shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`} aria-hidden="true">
                     {f.icon}
@@ -306,6 +328,8 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
+              </TiltCard>
+              </ScrollReveal3D>
             ))}
           </div>
         </div>
@@ -323,11 +347,11 @@ export default function HomePage() {
             Explore our range of energy storage solutions or speak with our sales team today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-200">
-            <Link href="/products" className="inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl hover:shadow-black/20 transition-all duration-200">
-              View Products
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </Link>
-            <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-3 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white transition-all duration-200">
+              <Link href="/products" className="btn-3d inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl hover:shadow-black/20 transition-all duration-200">
+                View Products
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </Link>
+              <Link href="/contact" className="btn-3d inline-flex items-center gap-2 px-8 py-3 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white transition-all duration-200">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
               Call Us Now
             </Link>

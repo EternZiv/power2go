@@ -5,6 +5,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { products, getProductBySlug } from "@/lib/products";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { TiltCard } from "@/components/TiltCard";
+import { Floating3D } from "@/components/Floating3D";
+import { ScrollReveal3D } from "@/components/ScrollReveal3D";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -73,6 +76,7 @@ export default async function ProductDetailPage({ params }: Props) {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12">
+            <ScrollReveal3D direction="left">
             <div>
               <span className="text-[#1447E6] font-semibold text-sm tracking-widest uppercase mb-3 block">Specifications</span>
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Technical Details</h2>
@@ -85,7 +89,9 @@ export default async function ProductDetailPage({ params }: Props) {
                 ))}
               </div>
             </div>
+            </ScrollReveal3D>
 
+            <ScrollReveal3D direction="right">
             <div>
               <span className="text-[#1447E6] font-semibold text-sm tracking-widest uppercase mb-3 block">Features</span>
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Key Features</h2>
@@ -116,6 +122,7 @@ export default async function ProductDetailPage({ params }: Props) {
                 </div>
               </div>
             </div>
+            </ScrollReveal3D>
           </div>
         </div>
       </section>
@@ -128,9 +135,11 @@ export default async function ProductDetailPage({ params }: Props) {
               <h2 className="text-2xl font-bold text-gray-900 mb-3">Product Views</h2>
               <p className="text-gray-500">Multiple angles of the {product.name}</p>
             </div>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-6 perspective-1000">
               {product.images.map((img, i) => (
-                <div key={i} className="relative h-72 rounded-2xl overflow-hidden bg-white border border-gray-200 shadow-sm">
+                <ScrollReveal3D key={i} direction="up" delay={i * 100}>
+                <TiltCard tiltDegree={3} glare={false}>
+                <div className="relative h-72 rounded-2xl overflow-hidden bg-white border border-gray-200 shadow-sm hover-lift-3d">
                   <Image
                     src={img}
                     alt={`${product.name} - view ${i + 1}`}
@@ -139,6 +148,8 @@ export default async function ProductDetailPage({ params }: Props) {
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
+                </TiltCard>
+                </ScrollReveal3D>
               ))}
             </div>
           </div>
@@ -155,11 +166,11 @@ export default async function ProductDetailPage({ params }: Props) {
             Contact our sales team for pricing, availability, and installation details.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl hover:shadow-black/20 transition-all duration-200">
+            <Link href="/contact" className="btn-3d inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl hover:shadow-black/20 transition-all duration-200">
               Get a Quote
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </Link>
-            <Link href="/products" className="inline-flex items-center gap-2 px-8 py-3 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white transition-all duration-200">
+            <Link href="/products" className="btn-3d inline-flex items-center gap-2 px-8 py-3 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white transition-all duration-200">
               Browse All Products
             </Link>
           </div>

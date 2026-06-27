@@ -4,6 +4,9 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { basePath } from "@/lib/basePath";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { TiltCard } from "@/components/TiltCard";
+import { Floating3D } from "@/components/Floating3D";
+import { ScrollReveal3D } from "@/components/ScrollReveal3D";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -95,7 +98,9 @@ export default function AboutPage() {
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 perspective-1000">
+            <ScrollReveal3D direction="left">
+            <TiltCard tiltDegree={4} glare={false}>
             <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:shadow-md transition-shadow duration-300 animate-fade-in-up">
               <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center mb-6">
                 <svg className="w-6 h-6 text-[#1447E6]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -107,6 +112,10 @@ export default function AboutPage() {
                 Our mission is to empower businesses and homes with cutting-edge energy storage solutions that are reliable, affordable, and environmentally responsible. We strive to reduce energy dependency and build a sustainable future for generations to come.
               </p>
             </div>
+            </TiltCard>
+            </ScrollReveal3D>
+            <ScrollReveal3D direction="right">
+            <TiltCard tiltDegree={4} glare={false}>
             <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:shadow-md transition-shadow duration-300 animate-fade-in-up delay-100">
               <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center mb-6">
                 <svg className="w-6 h-6 text-[#1447E6]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -118,6 +127,8 @@ export default function AboutPage() {
                 To be a global leader in energy storage technology, creating a world where every family and business has access to clean, reliable, and affordable energy solutions. We envision a Pakistan powered by sustainable, intelligent energy systems.
               </p>
             </div>
+            </TiltCard>
+            </ScrollReveal3D>
           </div>
         </div>
       </section>
@@ -145,13 +156,15 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-3">Our Core Values</h2>
             <p className="text-gray-500 text-lg">The principles that guide everything we do</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 perspective-1000">
             {coreValues.map((v, i) => (
-              <div key={i} className="feature-card text-center group animate-fade-in-up" style={{ animationDelay: `${i * 0.1}s` }}>
+              <TiltCard key={i} tiltDegree={5} glare={false}>
+              <div className="feature-card text-center group animate-fade-in-up" style={{ animationDelay: `${i * 0.1}s` }}>
                 <div className="text-4xl mb-4 transition-transform duration-300 group-hover:scale-110">{v.icon}</div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#1447E6] transition-colors">{v.title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{v.desc}</p>
               </div>
+              </TiltCard>
             ))}
           </div>
         </div>
@@ -164,7 +177,7 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-3">Our Parent Companies</h2>
             <p className="text-gray-500 text-lg">Power2Go is backed by industry-leading organisations in Pakistan.</p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 perspective-1000">
             {[
               {
                 icon: "📡",
@@ -179,13 +192,15 @@ export default function AboutPage() {
                 desc: "Orient Power is a premier energy company in Pakistan producing and distributing reliable power. With decades of experience in the energy sector, they provide Power2Go with deep industry knowledge, regulatory expertise, and an established distribution network that ensures our products reach customers across the country.",
               },
             ].map((c, i) => (
-              <div key={i} className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 animate-fade-in-up" style={{ animationDelay: `${i * 0.15}s` }}>
+              <TiltCard key={i} tiltDegree={5} glare={false}>
+              <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 animate-fade-in-up" style={{ animationDelay: `${i * 0.15}s` }}>
                 <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${c.color} text-2xl mb-5`}>
                   {c.icon}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{c.name}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{c.desc}</p>
               </div>
+              </TiltCard>
             ))}
           </div>
         </div>
@@ -200,16 +215,20 @@ export default function AboutPage() {
           </div>
           <div className="flex flex-col gap-0">
             {journey.map((item, i) => (
-              <div key={i} className="flex gap-6 pb-10 relative timeline-item animate-fade-in-up" style={{ animationDelay: `${i * 0.15}s` }}>
+              <ScrollReveal3D key={i} direction="left" delay={i * 100}>
+              <div className="flex gap-6 pb-10 relative timeline-item animate-fade-in-up" style={{ animationDelay: `${i * 0.15}s` }}>
                 {i < journey.length - 1 && (
                   <div className="absolute left-6 top-12 bottom-0 w-0.5 bg-gradient-to-b from-[#1447E6] to-[#01b0d9]" />
                 )}
+                <Floating3D amplitude={4} speed={2 + i * 0.3}>
                 <div className="timeline-dot flex-shrink-0">{item.year}</div>
+                </Floating3D>
                 <div className="pt-2">
                   <h3 className="text-lg font-bold text-gray-900 mb-1">{item.title}</h3>
                   <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </div>
+              </ScrollReveal3D>
             ))}
           </div>
         </div>
@@ -225,11 +244,11 @@ export default function AboutPage() {
             Discover how Power2Go is leading the transition to clean, reliable energy across Pakistan.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-200">
-            <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl hover:shadow-black/20 transition-all duration-200">
+            <Link href="/contact" className="btn-3d inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl hover:shadow-black/20 transition-all duration-200">
               Stay Updated
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </Link>
-            <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-3 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white transition-all duration-200">
+            <Link href="/contact" className="btn-3d inline-flex items-center gap-2 px-8 py-3 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white transition-all duration-200">
               Get in Touch
             </Link>
           </div>

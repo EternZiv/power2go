@@ -4,6 +4,9 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { basePath } from "@/lib/basePath";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { TiltCard } from "@/components/TiltCard";
+import { Floating3D } from "@/components/Floating3D";
+import { ScrollReveal3D } from "@/components/ScrollReveal3D";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -87,23 +90,23 @@ export default function ServicesPage() {
                 </div>
               </div>
             </div>
-            <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300">
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">6</p>
+            <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300 perspective-1000">
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={2}><p className="text-3xl font-bold text-[#22c55e]">6</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Service Offerings</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">500+</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={2.5}><p className="text-3xl font-bold text-[#22c55e]">500+</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Systems Installed</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">5 Yrs</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={3}><p className="text-3xl font-bold text-[#22c55e]">5 Yrs</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Warranty Coverage</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">24/7</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={3.5}><p className="text-3xl font-bold text-[#22c55e]">24/7</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Remote Monitoring</p>
-              </div>
+              </div></TiltCard>
             </div>
           </div>
         </div>
@@ -116,9 +119,11 @@ export default function ServicesPage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-3">Our Services</h2>
             <p className="text-gray-500 text-lg">Comprehensive support throughout the entire lifecycle of your energy system</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 perspective-1000">
             {services.map((s, i) => (
-              <div key={i} className="bg-white rounded-2xl p-7 border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group animate-fade-in-up" style={{ animationDelay: `${i * 0.1}s` }}>
+              <ScrollReveal3D key={i} direction="up" delay={i * 100}>
+              <TiltCard tiltDegree={5} glare={false}>
+              <div className="bg-white rounded-2xl p-7 border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group animate-fade-in-up" style={{ animationDelay: `${i * 0.1}s` }}>
                 <div className="text-4xl mb-5 transition-transform duration-300 group-hover:scale-110">{s.icon}</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#1447E6] transition-colors">{s.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed mb-5">{s.desc}</p>
@@ -133,6 +138,8 @@ export default function ServicesPage() {
                   ))}
                 </ul>
               </div>
+              </TiltCard>
+              </ScrollReveal3D>
             ))}
           </div>
         </div>
@@ -145,20 +152,24 @@ export default function ServicesPage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-3">How It Works</h2>
             <p className="text-gray-500 text-lg">Our simple four-step process from consultation to commissioning</p>
           </div>
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-4 gap-8 perspective-1000">
             {[
               { step: "01", title: "Consultation", desc: "Contact us for a free energy assessment and site survey." },
               { step: "02", title: "Design", desc: "Our engineers design the perfect system for your specific needs." },
               { step: "03", title: "Installation", desc: "Certified technicians install and commission your system." },
               { step: "04", title: "Support", desc: "Ongoing monitoring, maintenance, and 24/7 customer support." },
             ].map((p, i) => (
-              <div key={p.step} className="text-center group animate-fade-in-up" style={{ animationDelay: `${i * 0.15}s` }}>
+              <ScrollReveal3D key={p.step} direction="up" delay={i * 100}>
+              <TiltCard tiltDegree={4} glare={false}>
+              <div className="text-center group animate-fade-in-up" style={{ animationDelay: `${i * 0.15}s` }}>
                 <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#1447E6] to-[#01b0d9] text-white flex items-center justify-center text-lg font-bold mx-auto mb-5 shadow-lg shadow-blue-200 group-hover:scale-110 transition-transform duration-300">
                   {p.step}
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2">{p.title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{p.desc}</p>
               </div>
+              </TiltCard>
+              </ScrollReveal3D>
             ))}
           </div>
         </div>
@@ -174,11 +185,11 @@ export default function ServicesPage() {
             Schedule a free consultation with our energy experts today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-200">
-            <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl hover:shadow-black/20 transition-all duration-200">
+            <Link href="/contact" className="btn-3d inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl hover:shadow-black/20 transition-all duration-200">
               Book Consultation
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </Link>
-            <Link href="/products" className="inline-flex items-center gap-2 px-8 py-3 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white transition-all duration-200">
+            <Link href="/products" className="btn-3d inline-flex items-center gap-2 px-8 py-3 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white transition-all duration-200">
               View Products
             </Link>
           </div>

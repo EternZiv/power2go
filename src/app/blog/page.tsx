@@ -5,6 +5,9 @@ import Link from "next/link";
 import { basePath } from "@/lib/basePath";
 import { articles } from "@/lib/blog";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { TiltCard } from "@/components/TiltCard";
+import { Floating3D } from "@/components/Floating3D";
+import { ScrollReveal3D } from "@/components/ScrollReveal3D";
 
 const categoryColors: Record<string, string> = {
   Technology: "bg-blue-600",
@@ -58,23 +61,23 @@ export default function BlogPage() {
                 </div>
               </div>
             </div>
-            <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300">
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">6</p>
+            <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300 perspective-1000">
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={2}><p className="text-3xl font-bold text-[#22c55e]">6</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Articles Published</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">4</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={2.5}><p className="text-3xl font-bold text-[#22c55e]">4</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Topic Categories</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">Monthly</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={3}><p className="text-3xl font-bold text-[#22c55e]">Monthly</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">New Articles</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">Free</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={3.5}><p className="text-3xl font-bold text-[#22c55e]">Free</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Resource Library</p>
-              </div>
+              </div></TiltCard>
             </div>
           </div>
         </div>
@@ -106,6 +109,7 @@ export default function BlogPage() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {activeCategory === "All" && (
+            <TiltCard tiltDegree={3} glare={false}>
             <Link
               href={`/blog/${featured.slug}`}
               className="blog-card mb-10 flex flex-col md:flex-row group animate-fade-in-up"
@@ -136,10 +140,13 @@ export default function BlogPage() {
                 </span>
               </div>
             </Link>
+            </TiltCard>
           )}
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 perspective-1000">
             {filtered.map((article, i) => (
+              <ScrollReveal3D key={article.slug} direction="up" delay={i * 100}>
+              <TiltCard tiltDegree={4} glare={false}>
               <Link
                 key={article.slug}
                 href={`/blog/${article.slug}`}
@@ -167,6 +174,8 @@ export default function BlogPage() {
                   </div>
                 </div>
               </Link>
+              </TiltCard>
+              </ScrollReveal3D>
             ))}
           </div>
         </div>

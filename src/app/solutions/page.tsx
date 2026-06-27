@@ -4,6 +4,9 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { basePath } from "@/lib/basePath";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { TiltCard } from "@/components/TiltCard";
+import { Floating3D } from "@/components/Floating3D";
+import { ScrollReveal3D } from "@/components/ScrollReveal3D";
 
 export const metadata: Metadata = {
   title: "Solutions",
@@ -103,23 +106,23 @@ export default function SolutionsPage() {
                 </div>
               </div>
             </div>
-            <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300">
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">4</p>
+            <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300 perspective-1000">
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={2}><p className="text-3xl font-bold text-[#22c55e]">4</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Solution Categories</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">6</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={2.5}><p className="text-3xl font-bold text-[#22c55e]">6</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Product Models</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">20-40%</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={3}><p className="text-3xl font-bold text-[#22c55e]">20-40%</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Cost Reduction</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">&lt;10ms</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={3.5}><p className="text-3xl font-bold text-[#22c55e]">&lt;10ms</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Backup Switchover</p>
-              </div>
+              </div></TiltCard>
             </div>
           </div>
         </div>
@@ -129,7 +132,8 @@ export default function SolutionsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-16">
             {solutions.map((sol, i) => (
-              <div key={i} className="grid md:grid-cols-2 gap-12 items-center animate-fade-in-up" style={{ animationDelay: `${i * 0.15}s` }}>
+              <ScrollReveal3D key={i} direction={i % 2 === 0 ? "left" : "right"} delay={i * 150}>
+              <div className="grid md:grid-cols-2 gap-12 items-center animate-fade-in-up" style={{ animationDelay: `${i * 0.15}s` }}>
                 <div className={`${i % 2 === 1 ? "md:order-2" : ""}`}>
                   <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4 ${sol.lightColor}`}>
                     {sol.subtitle}
@@ -167,6 +171,7 @@ export default function SolutionsPage() {
                   </div>
                 </div>
               </div>
+              </ScrollReveal3D>
             ))}
           </div>
         </div>
@@ -182,11 +187,11 @@ export default function SolutionsPage() {
             Our energy consultants will assess your needs and recommend the perfect system.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-200">
-            <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl hover:shadow-black/20 transition-all duration-200">
+            <Link href="/contact" className="btn-3d inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl hover:shadow-black/20 transition-all duration-200">
               Get Free Consultation
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </Link>
-            <Link href="/products" className="inline-flex items-center gap-2 px-8 py-3 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white transition-all duration-200">
+            <Link href="/products" className="btn-3d inline-flex items-center gap-2 px-8 py-3 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white transition-all duration-200">
               Browse All Products
             </Link>
           </div>

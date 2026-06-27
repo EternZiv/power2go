@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { basePath } from "@/lib/basePath";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { TiltCard } from "@/components/TiltCard";
+import { Floating3D } from "@/components/Floating3D";
+import { ScrollReveal3D } from "@/components/ScrollReveal3D";
 
 const faqs = [
   {
@@ -89,23 +92,23 @@ export default function FAQPage() {
                 </div>
               </div>
             </div>
-            <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300">
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">14</p>
+            <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300 perspective-1000">
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={2}><p className="text-3xl font-bold text-[#22c55e]">14</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Answered Questions</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">4</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={2.5}><p className="text-3xl font-bold text-[#22c55e]">4</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Topic Categories</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">24/7</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={3}><p className="text-3xl font-bold text-[#22c55e]">24/7</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Support Available</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <p className="text-3xl font-bold text-[#22c55e]">Free</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={3.5}><p className="text-3xl font-bold text-[#22c55e]">Free</p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Consultation</p>
-              </div>
+              </div></TiltCard>
             </div>
           </div>
         </div>
@@ -129,12 +132,13 @@ export default function FAQPage() {
             ))}
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-3 perspective-1000">
             {currentCategory.items.map((faq, i) => {
               const idx = i;
               const isOpen = openIndex === idx;
               return (
-                <div key={i} className="border border-gray-200 rounded-xl overflow-hidden">
+                <ScrollReveal3D key={i} direction="up" delay={i * 50}>
+                <div className="border border-gray-200 rounded-xl overflow-hidden">
                   <button
                     onClick={() => setOpenIndex(isOpen ? null : idx)}
                     className="w-full flex items-center justify-between px-6 py-4 text-left bg-white hover:bg-gray-50 transition-colors"
@@ -151,6 +155,7 @@ export default function FAQPage() {
                     </div>
                   )}
                 </div>
+                </ScrollReveal3D>
               );
             })}
           </div>
@@ -165,11 +170,11 @@ export default function FAQPage() {
             Our team is ready to help you find the right energy solution.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-200">
-            <a href="tel:111-P2G-247" className="inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl transition-all duration-200">
+            <a href="tel:111-P2G-247" className="btn-3d inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl transition-all duration-200">
               Call 111-P2G-247
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <a href="mailto:info@power2go.com.pk" className="inline-flex items-center gap-2 px-8 py-3 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white transition-all duration-200">
+            <a href="mailto:info@power2go.com.pk" className="btn-3d inline-flex items-center gap-2 px-8 py-3 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white transition-all duration-200">
               Email Us
             </a>
           </div>
