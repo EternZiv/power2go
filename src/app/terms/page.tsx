@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <>
-      <section className="relative overflow-hidden min-h-[100dvh] flex items-center pt-14">
+      <section className="relative overflow-hidden min-h-[60vh] md:min-h-[100dvh] flex items-center pt-14">
         <Image
           src={`${basePath}/images/10.png`}
           alt="Power2Go terms of service"
@@ -23,7 +23,6 @@ export default function TermsPage() {
           className="object-cover object-center"
           sizes="100vw"
           priority
-          quality={85}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-[#0d1726]/90 via-[#0d1726]/70 to-[#1447E6]/60" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/40 via-transparent to-transparent pointer-events-none" />

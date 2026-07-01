@@ -23,6 +23,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${product.name} | Power2Go`,
     description: product.description,
+    alternates: {
+      canonical: `/products/${slug}`,
+    },
   };
 }
 
@@ -33,7 +36,7 @@ export default async function ProductDetailPage({ params }: Props) {
 
   return (
     <>
-      <section className="relative overflow-hidden min-h-[100dvh] flex items-center">
+      <section className="relative overflow-hidden min-h-[60vh] md:min-h-[100dvh] flex items-center">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1447E6] via-[#0d1726] to-[#01b0d9]" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/40 via-transparent to-transparent pointer-events-none" />
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">

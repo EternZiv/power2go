@@ -52,6 +52,9 @@ export const metadata: Metadata = {
   publisher: "Power2Go",
   alternates: {
     canonical: "/",
+    languages: {
+      "en": "/",
+    },
   },
   robots: {
     index: true,

@@ -65,7 +65,7 @@ export function ProductCardGrid({ products, columns = 4 }: ProductCardGridProps)
               <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent" />
             </div>
 
-            <div className="p-5 flex flex-col flex-1">
+            <div className="p-4 sm:p-5 flex flex-col flex-1">
               <h3 className="font-bold text-gray-900 mb-1 group-hover:text-[#1447E6] transition-colors text-lg leading-snug">{p.name}</h3>
               <p className="text-sm text-gray-500 mb-3">{p.sku}</p>
 

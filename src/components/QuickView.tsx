@@ -36,8 +36,14 @@ export function QuickView({ product, onClose }: QuickViewProps) {
     };
   }, [onClose]);
 
+  const dialogId = `quickview-${product.slug}`;
+  const titleId = `${dialogId}-title`;
+
   return (
     <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby={titleId}
       className="fixed inset-0 z-[100] flex items-center justify-center p-4"
       onClick={onClose}
     >
@@ -48,10 +54,10 @@ export function QuickView({ product, onClose }: QuickViewProps) {
       >
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors"
+          className="absolute top-3 right-3 z-10 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors"
           aria-label="Close"
         >
-          <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+          <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
             <path d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
@@ -70,7 +76,7 @@ export function QuickView({ product, onClose }: QuickViewProps) {
         </div>
 
         <div className="p-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-1">{product.name}</h3>
+          <h3 id={titleId} className="text-xl font-bold text-gray-900 mb-1">{product.name}</h3>
           <p className="text-sm text-gray-400 font-mono mb-3">{product.sku}</p>
           {product.description && (
             <p className="text-sm text-gray-600 mb-4 leading-relaxed">{product.description}</p>
@@ -97,7 +103,7 @@ export function QuickView({ product, onClose }: QuickViewProps) {
           <Link
             href={`/products/${product.slug}`}
             onClick={onClose}
-            className="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-semibold text-white bg-[#1447E6] hover:bg-[#103ed6] hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-200"
+            className="w-full flex items-center justify-center gap-2 py-2.5 max-sm:min-h-[44px] rounded-lg text-sm font-semibold text-white bg-[#1447E6] hover:bg-[#103ed6] hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-200"
           >
             View Full Details
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>

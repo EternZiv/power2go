@@ -11,9 +11,7 @@ import { StatValue } from "@/components/StatValue";
 import { Testimonials } from "@/components/Testimonials";
 import { Newsletter } from "@/components/Newsletter";
 import { TiltCard } from "@/components/TiltCard";
-import { Floating3D } from "@/components/Floating3D";
 import { ScrollReveal3D } from "@/components/ScrollReveal3D";
-import { AnimatedCounter } from "@/components/AnimatedCounter";
 
 const solutions = [
   {
@@ -134,7 +132,7 @@ const stats = [
 export default function HomePage() {
   return (
     <>
-      <section className="relative overflow-hidden min-h-[100dvh] flex items-center">
+      <section className="relative overflow-hidden min-h-[60vh] md:min-h-[100dvh] flex items-center">
         <Image
           src={`${basePath}/images/1.png`}
           alt="Wind turbines and solar panels at sunset representing clean energy"
@@ -142,12 +140,11 @@ export default function HomePage() {
           className="object-cover object-center"
           sizes="100vw"
           priority
-          quality={85}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/30" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/60 via-transparent to-transparent pointer-events-none" />
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-40">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-40">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs sm:text-sm font-medium tracking-wider shadow-md animate-fade-in-left">
@@ -193,7 +190,7 @@ export default function HomePage() {
               </Link>
               </div>
 
-              <div className="mt-12 flex items-center gap-6 text-white/50 text-xs animate-fade-in-left delay-500">
+              <div className="mt-12 flex flex-wrap items-center gap-3 sm:gap-6 text-white/50 text-xs animate-fade-in-left delay-500">
                 <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#22c55e]" aria-hidden="true" /> CE Certified</span>
                 <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#22c55e]" aria-hidden="true" /> UL Listed</span>
                 <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#22c55e]" aria-hidden="true" /> IEC Compliant</span>
@@ -233,9 +230,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white relative overflow-hidden">
+      <section className="py-16 md:py-20 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="text-center max-w-3xl mx-auto mb-14 animate-fade-in-up">
+          <div className="text-center max-w-3xl mx-auto mb-8 md:mb-14 animate-fade-in-up">
             <span className="text-[#1447E6] font-semibold text-sm tracking-widest uppercase mb-3 block">What We Offer</span>
             <h2 className="text-3xl md:text-[36px] font-bold text-slate-900 tracking-tight mb-4">Energy Storage Solutions</h2>
             <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
@@ -261,9 +258,9 @@ export default function HomePage() {
         </div>
       </AnimatedStatsSection>
 
-      <section className="py-24 bg-gray-100">
+      <section className="py-16 md:py-24 bg-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 animate-fade-in-up">
+          <div className="text-center mb-10 md:mb-16 animate-fade-in-up">
             <h2 className="text-3xl md:text-[36px] font-bold text-gray-900 mb-4">Our Products</h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">Explore our complete range of energy storage systems</p>
           </div>
@@ -273,7 +270,7 @@ export default function HomePage() {
           <div className="text-center animate-fade-in-up">
             <Link
               href="/products"
-              className="inline-flex items-center gap-2 px-8 py-3 border border-gray-300 text-gray-700 font-semibold rounded-xl hover:border-[#1447E6] hover:text-[#1447E6] hover:shadow-lg hover:shadow-blue-100 transition-all duration-300 group"
+              className="inline-flex items-center gap-2 px-8 py-3 max-sm:min-h-[44px] border border-gray-300 text-gray-700 font-semibold rounded-xl hover:border-[#1447E6] hover:text-[#1447E6] hover:shadow-lg hover:shadow-blue-100 transition-all duration-300 group"
             >
               Browse All Products
               <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
@@ -284,9 +281,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="text-center mb-16 animate-fade-in-up">
+          <div className="text-center mb-10 md:mb-16 animate-fade-in-up">
             <span className="text-[#1447E6] font-semibold text-sm tracking-widest uppercase mb-3 block">Why Us</span>
             <h2 className="text-3xl md:text-[36px] font-bold text-gray-900 mb-4">Why Choose Power2Go</h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">Industry-leading technology and innovation for reliable energy storage</p>

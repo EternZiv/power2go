@@ -8,7 +8,6 @@ import { TiltCard } from "@/components/TiltCard";
 import { Floating3D } from "@/components/Floating3D";
 import { ScrollReveal3D } from "@/components/ScrollReveal3D";
 import { FocusCards } from "@/components/FocusCards";
-import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { AnimatedStatsSection } from "@/components/AnimatedStatsSection";
 import { AnimatedStatCard } from "@/components/AnimatedStatCard";
 import { StatValue } from "@/components/StatValue";
@@ -42,7 +41,7 @@ const stats = [
 export default function AboutPage() {
   return (
     <>
-      <section className="relative overflow-hidden min-h-[100dvh] flex items-center pt-14">
+      <section className="relative overflow-hidden min-h-[60vh] md:min-h-[100dvh] flex items-center pt-14">
         <Image
           src={`${basePath}/images/2.png`}
           alt="Power2Go team and energy storage solutions"
@@ -50,7 +49,6 @@ export default function AboutPage() {
           className="object-cover object-center"
           sizes="100vw"
           priority
-          quality={85}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-[#0d1726]/90 via-[#0d1726]/70 to-[#1447E6]/60" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/60 via-transparent to-transparent" />
@@ -109,7 +107,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-8 perspective-1000">
             <ScrollReveal3D direction="left">
@@ -161,9 +159,9 @@ export default function AboutPage() {
         </div>
       </AnimatedStatsSection>
 
-      <section className="py-20 bg-white">
+      <section className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 animate-fade-in-up">
+          <div className="text-center mb-8 md:mb-12 animate-fade-in-up">
             <span className="text-[#1447E6] font-semibold text-sm tracking-widest uppercase mb-3 block">Our Values</span>
             <h2 className="text-3xl font-bold text-gray-900 mb-3">Our Core Values</h2>
             <p className="text-gray-500 text-lg">The principles that guide everything we do</p>
@@ -176,9 +174,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 animate-fade-in-up">
+          <div className="text-center mb-8 md:mb-12 animate-fade-in-up">
             <span className="text-[#1447E6] font-semibold text-sm tracking-widest uppercase mb-3 block">Partners</span>
             <h2 className="text-3xl font-bold text-gray-900 mb-3">Our Parent Companies</h2>
             <p className="text-gray-500 text-lg">Power2Go is backed by industry-leading organisations in Pakistan.</p>
@@ -212,9 +210,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="py-16 md:py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 animate-fade-in-up">
+          <div className="text-center mb-8 md:mb-12 animate-fade-in-up">
             <span className="text-[#1447E6] font-semibold text-sm tracking-widest uppercase mb-3 block">Timeline</span>
             <h2 className="text-3xl font-bold text-gray-900 mb-3">Our Journey</h2>
             <p className="text-gray-500 text-lg">Key milestones in Power2Go&apos;s history</p>
@@ -222,7 +220,7 @@ export default function AboutPage() {
           <div className="flex flex-col gap-0">
             {journey.map((item, i) => (
               <ScrollReveal3D key={i} direction="left" delay={i * 100}>
-              <div className="flex gap-6 pb-10 relative timeline-item animate-fade-in-up" style={{ animationDelay: `${i * 0.15}s` }}>
+              <div className="flex gap-6 pb-8 md:pb-10 relative timeline-item animate-fade-in-up" style={{ animationDelay: `${i * 0.15}s` }}>
                 {i < journey.length - 1 && (
                   <div className="absolute left-6 top-12 bottom-0 w-0.5 bg-gradient-to-b from-[#1447E6] to-[#01b0d9]" />
                 )}

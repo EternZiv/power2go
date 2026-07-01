@@ -21,6 +21,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${article.title} | Power2Go Blog`,
     description: article.excerpt,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
     openGraph: {
       title: article.title,
       description: article.excerpt,
@@ -60,8 +63,28 @@ export default async function BlogArticlePage({ params }: Props) {
       return { type: "p" as const, text: line };
     });
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.excerpt,
+    image: article.image,
+    datePublished: new Date(article.date).toISOString(),
+    dateModified: new Date(article.date).toISOString(),
+    author: { "@type": "Person", name: article.author },
+    publisher: {
+      "@type": "Organization",
+      name: "Power2Go",
+      logo: { "@type": "ImageObject", url: "https://power2go.energy/logo-light.png" },
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <section className="relative overflow-hidden min-h-[60vh] md:min-h-[70vh] flex items-center pt-14">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1447E6] via-[#0d1726] to-[#01b0d9]" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/40 via-transparent to-transparent" />
@@ -94,7 +117,7 @@ export default async function BlogArticlePage({ params }: Props) {
             <article className="lg:col-span-2">
               {article.image && (
                 <div className="relative w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden mb-10 bg-gray-100">
-                  <Image src={article.image} alt={article.title} fill className="object-cover" priority sizes="(max-width: 1024px) 100vw, 66vw" />
+                  <Image src={article.image} alt={article.title} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 66vw" />
                 </div>
               )}
 
@@ -141,7 +164,7 @@ export default async function BlogArticlePage({ params }: Props) {
                 ))}
               </div>
 
-              <div className="flex items-center gap-4 mt-8 pt-6 border-t border-gray-100">
+              <div className="flex flex-wrap items-center gap-4 mt-8 pt-6 border-t border-gray-100">
                 <span className="text-sm font-medium text-gray-500">Share:</span>
                 {[
                   { label: "Twitter", href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(`https://power2go.energy/blog/${article.slug}`)}` },
@@ -155,7 +178,7 @@ export default async function BlogArticlePage({ params }: Props) {
               </div>
 
               {(prev || next) && (
-                <div className="grid grid-cols-2 gap-4 mt-10 pt-8 border-t border-gray-100">
+                <div className="grid max-sm:grid-cols-1 sm:grid-cols-2 gap-4 mt-10 pt-8 border-t border-gray-100">
                   {prev ? (
                     <Link href={`/blog/${prev.slug}`} className="group p-4 rounded-xl border border-gray-200 hover:border-[#1447E6] hover:shadow-sm transition-all">
                       <span className="text-xs text-gray-400 font-medium">&larr; Previous</span>
@@ -230,7 +253,7 @@ export default async function BlogArticlePage({ params }: Props) {
           <p className="text-white/80 text-lg mb-10 max-w-2xl mx-auto">
             Subscribe to our newsletter for the latest insights on energy storage technology.
           </p>
-          <Link href="/blog" className="group inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl transition-all duration-200">
+          <Link href="/blog" className="group inline-flex items-center gap-2 px-8 py-3 max-sm:min-h-[44px] bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl transition-all duration-200">
             Browse All Articles
             <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </Link>

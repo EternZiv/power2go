@@ -68,7 +68,7 @@ const solutions = [
 export default function SolutionsPage() {
   return (
     <>
-      <section className="relative overflow-hidden min-h-[100dvh] flex items-center pt-14">
+      <section className="relative overflow-hidden min-h-[60vh] md:min-h-[100dvh] flex items-center pt-14">
         <Image
           src={`${basePath}/images/3.png`}
           alt="Power2Go energy storage solutions overview"
@@ -76,7 +76,6 @@ export default function SolutionsPage() {
           className="object-cover object-center"
           sizes="100vw"
           priority
-          quality={85}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-[#0d1726]/90 via-[#0d1726]/70 to-[#1447E6]/60" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/60 via-transparent to-transparent" />
@@ -137,7 +136,7 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-16">
             {solutions.map((sol, i) => (

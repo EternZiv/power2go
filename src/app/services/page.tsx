@@ -57,7 +57,7 @@ const services = [
 export default function ServicesPage() {
   return (
     <>
-      <section className="relative overflow-hidden min-h-[100dvh] flex items-center pt-14">
+      <section className="relative overflow-hidden min-h-[60vh] md:min-h-[100dvh] flex items-center pt-14">
         <Image
           src={`${basePath}/images/4.png`}
           alt="Power2Go professional services and installation"
@@ -65,7 +65,6 @@ export default function ServicesPage() {
           className="object-cover object-center"
           sizes="100vw"
           priority
-          quality={85}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-[#0d1726]/90 via-[#0d1726]/70 to-[#1447E6]/60" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/60 via-transparent to-transparent" />
@@ -122,9 +121,9 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14 animate-fade-in-up">
+          <div className="text-center mb-8 md:mb-14 animate-fade-in-up">
             <span className="text-[#1447E6] font-semibold text-sm tracking-widest uppercase mb-3 block">What We Offer</span>
             <h2 className="text-3xl font-bold text-gray-900 mb-3">Our Services</h2>
             <p className="text-gray-500 text-lg">Comprehensive support throughout the entire lifecycle of your energy system</p>
@@ -155,9 +154,9 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14 animate-fade-in-up">
+          <div className="text-center mb-8 md:mb-14 animate-fade-in-up">
             <span className="text-[#1447E6] font-semibold text-sm tracking-widest uppercase mb-3 block">Process</span>
             <h2 className="text-3xl font-bold text-gray-900 mb-3">How It Works</h2>
             <p className="text-gray-500 text-lg">Our simple four-step process from consultation to commissioning</p>

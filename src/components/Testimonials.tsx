@@ -121,7 +121,7 @@ export function Testimonials({ className = "" }: TestimonialsProps) {
       <div className="absolute bottom-[-100px] left-[-100px] w-[300px] h-[300px] rounded-full bg-[#22c55e]/10 blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="text-center mb-14 animate-fade-in-up">
+        <div className="text-center mb-8 md:mb-14 animate-fade-in-up">
           <span className="text-[#22c55e] font-semibold text-sm tracking-widest uppercase mb-3 block">Testimonials</span>
           <h2 className="text-3xl md:text-[36px] font-bold text-white mb-4">What Our Customers Say</h2>
           <p className="text-white/60 text-lg max-w-2xl mx-auto">
@@ -180,7 +180,7 @@ export function Testimonials({ className = "" }: TestimonialsProps) {
                   if (reducedMotion) setActiveIndex(i);
                   else goTo(i);
                 }}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   i === activeIndex ? "bg-white w-8" : "bg-white/30 hover:bg-white/50"
                 }`}
                 aria-label={`View testimonial ${i + 1}`}

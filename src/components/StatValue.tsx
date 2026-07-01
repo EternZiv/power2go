@@ -24,9 +24,7 @@ export function StatValue({ value, className = "", as: Tag = "span" }: StatValue
         if (entry.isIntersecting && !done.current) {
           done.current = true;
           const target = parseFloat(numMatch[1]);
-          const suffix = numMatch[2] || "";
           const startTime = performance.now();
-          const decimals = value.includes(".") ? 1 : 0;
           const animate = (now: number) => {
             const elapsed = now - startTime;
             const progress = Math.min(elapsed / 1200, 1);
@@ -47,10 +45,9 @@ export function StatValue({ value, className = "", as: Tag = "span" }: StatValue
     return <Tag className={className}>{value}</Tag>;
   }
 
-  const target = parseFloat(numMatch![1]);
   const suffix = numMatch![2] || "";
   const decimals = value.includes(".") ? 1 : 0;
   const display = decimals ? displayed.toFixed(decimals) : String(Math.round(displayed));
 
-  return <Tag ref={ref as any} className={className}>{display}{suffix}</Tag>;
+  return <Tag ref={ref as React.Ref<HTMLSpanElement & HTMLParagraphElement>} className={className}>{display}{suffix}</Tag>;
 }

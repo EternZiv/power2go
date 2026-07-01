@@ -89,7 +89,7 @@ export function Newsletter({ className = "", variant = "dark" }: NewsletterProps
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className={`px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-2 ${
+                className={`px-6 py-3 max-sm:min-h-[44px] rounded-xl text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-2 ${
                   isDark
                     ? "bg-white text-[#1447E6] hover:bg-gray-100 disabled:opacity-60"
                     : "bg-[#1447E6] text-white hover:bg-[#103ed6] disabled:opacity-60"

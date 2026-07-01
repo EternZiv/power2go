@@ -324,3 +324,11 @@ body {
   .animate-pulse-3d,
   .animate-rotate-y { animation: none !important; }
 }
+
+@media (max-width: 639px) {
+  .btn-primary,
+  .btn-outline,
+  .btn-3d {
+    min-height: 44px;
+  }
+}
