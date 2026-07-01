@@ -85,9 +85,23 @@ export default function ContactPage() {
   });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+
+  const validate = () => {
+    const errors: Record<string, string> = {};
+    if (!form.name.trim()) errors.name = "Name is required";
+    if (!form.email.trim()) errors.email = "Email is required";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errors.email = "Invalid email format";
+    if (!form.phone.trim()) errors.phone = "Phone is required";
+    if (!form.subject.trim()) errors.subject = "Subject is required";
+    if (!form.message.trim()) errors.message = "Message is required";
+    setFieldErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validate()) return;
     setStatus("sending");
     setErrorMsg("");
 
@@ -100,6 +114,7 @@ export default function ContactPage() {
       if (res.ok) {
         setStatus("success");
         setForm({ name: "", email: "", phone: "", subject: "", message: "" });
+        setFieldErrors({});
       } else {
         setErrorMsg("Failed to send. Please try again or email us directly.");
         setStatus("error");
@@ -108,6 +123,11 @@ export default function ContactPage() {
       setErrorMsg("Network error. Please check your connection and try again.");
       setStatus("error");
     }
+  };
+
+  const handleChange = (field: string, value: string) => {
+    setForm({ ...form, [field]: value });
+    if (fieldErrors[field]) setFieldErrors({ ...fieldErrors, [field]: "" });
   };
 
   const phoneLink = (text: string) => {
@@ -180,7 +200,7 @@ export default function ContactPage() {
             {contactCards.map((card, i) => (
               <ScrollReveal3D key={i} direction="up" delay={i * 100}>
               <TiltCard tiltDegree={5} glare={false}>
-              <div key={i} className="flex flex-col gap-3 p-6 rounded-2xl border border-gray-100 hover:shadow-md hover:border-gray-200 transition-all duration-300 animate-fade-in-up" style={{ animationDelay: `${i * 0.1}s` }}>
+              <div className="flex flex-col gap-3 p-6 rounded-2xl border border-gray-100 hover:shadow-md hover:border-gray-200 transition-all duration-300 animate-fade-in-up" style={{ animationDelay: `${i * 0.1}s` }}>
                 <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center">
                   {card.icon}
                 </div>
@@ -232,11 +252,14 @@ export default function ContactPage() {
                       id="contact-name"
                       type="text"
                       required
-                      className="form-input"
+                      className={`form-input ${fieldErrors.name ? "border-red-400 focus:border-red-500 focus:ring-red-200" : ""}`}
                       placeholder="Enter your full name"
                       value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      onChange={(e) => handleChange("name", e.target.value)}
+                      aria-invalid={!!fieldErrors.name}
+                      aria-describedby={fieldErrors.name ? "err-name" : undefined}
                     />
+                    {fieldErrors.name && <p id="err-name" className="text-red-500 text-xs mt-1">{fieldErrors.name}</p>}
                   </div>
                   <div>
                     <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700 mb-1.5">Email Address <span className="text-red-500">*</span></label>
@@ -244,11 +267,14 @@ export default function ContactPage() {
                       id="contact-email"
                       type="email"
                       required
-                      className="form-input"
+                      className={`form-input ${fieldErrors.email ? "border-red-400 focus:border-red-500 focus:ring-red-200" : ""}`}
                       placeholder="your.email@example.com"
                       value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      onChange={(e) => handleChange("email", e.target.value)}
+                      aria-invalid={!!fieldErrors.email}
+                      aria-describedby={fieldErrors.email ? "err-email" : undefined}
                     />
+                    {fieldErrors.email && <p id="err-email" className="text-red-500 text-xs mt-1">{fieldErrors.email}</p>}
                   </div>
                   <div>
                     <label htmlFor="contact-phone" className="block text-sm font-medium text-gray-700 mb-1.5">Phone Number <span className="text-red-500">*</span></label>
@@ -256,11 +282,14 @@ export default function ContactPage() {
                       id="contact-phone"
                       type="tel"
                       required
-                      className="form-input"
+                      className={`form-input ${fieldErrors.phone ? "border-red-400 focus:border-red-500 focus:ring-red-200" : ""}`}
                       placeholder="+92-300-1234567"
                       value={form.phone}
-                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      onChange={(e) => handleChange("phone", e.target.value)}
+                      aria-invalid={!!fieldErrors.phone}
+                      aria-describedby={fieldErrors.phone ? "err-phone" : undefined}
                     />
+                    {fieldErrors.phone && <p id="err-phone" className="text-red-500 text-xs mt-1">{fieldErrors.phone}</p>}
                   </div>
                   <div>
                     <label htmlFor="contact-subject" className="block text-sm font-medium text-gray-700 mb-1.5">Subject <span className="text-red-500">*</span></label>
@@ -268,11 +297,14 @@ export default function ContactPage() {
                       id="contact-subject"
                       type="text"
                       required
-                      className="form-input"
+                      className={`form-input ${fieldErrors.subject ? "border-red-400 focus:border-red-500 focus:ring-red-200" : ""}`}
                       placeholder="How can we help you?"
                       value={form.subject}
-                      onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                      onChange={(e) => handleChange("subject", e.target.value)}
+                      aria-invalid={!!fieldErrors.subject}
+                      aria-describedby={fieldErrors.subject ? "err-subject" : undefined}
                     />
+                    {fieldErrors.subject && <p id="err-subject" className="text-red-500 text-xs mt-1">{fieldErrors.subject}</p>}
                   </div>
                   <div>
                     <label htmlFor="contact-message" className="block text-sm font-medium text-gray-700 mb-1.5">Message <span className="text-red-500">*</span></label>
@@ -280,11 +312,14 @@ export default function ContactPage() {
                       id="contact-message"
                       required
                       rows={4}
-                      className="form-input resize-none"
+                      className={`form-input resize-none ${fieldErrors.message ? "border-red-400 focus:border-red-500 focus:ring-red-200" : ""}`}
                       placeholder="Tell us more about your inquiry..."
                       value={form.message}
-                      onChange={(e) => setForm({ ...form, message: e.target.value })}
+                      onChange={(e) => handleChange("message", e.target.value)}
+                      aria-invalid={!!fieldErrors.message}
+                      aria-describedby={fieldErrors.message ? "err-message" : undefined}
                     />
+                    {fieldErrors.message && <p id="err-message" className="text-red-500 text-xs mt-1">{fieldErrors.message}</p>}
                   </div>
                   <button
                     type="submit"
@@ -394,9 +429,9 @@ export default function ContactPage() {
             Explore our range of energy storage solutions or speak with our sales team today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-200">
-            <Link href="/products" className="btn-3d inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl hover:shadow-black/20 transition-all duration-200">
+            <Link href="/products" className="group btn-3d inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl hover:shadow-black/20 transition-all duration-200">
               View Products
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </Link>
             <a href="tel:111-P2G-247" className="btn-3d inline-flex items-center gap-2 px-8 py-3 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white transition-all duration-200">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>

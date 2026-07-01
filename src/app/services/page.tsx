@@ -7,6 +7,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { TiltCard } from "@/components/TiltCard";
 import { Floating3D } from "@/components/Floating3D";
 import { ScrollReveal3D } from "@/components/ScrollReveal3D";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -92,11 +93,11 @@ export default function ServicesPage() {
             </div>
             <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300 perspective-1000">
               <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={2}><p className="text-3xl font-bold text-[#22c55e]">6</p></Floating3D>
+                <Floating3D amplitude={3} speed={2}><p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="6" /></p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Service Offerings</p>
               </div></TiltCard>
               <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={2.5}><p className="text-3xl font-bold text-[#22c55e]">500+</p></Floating3D>
+                <Floating3D amplitude={3} speed={2.5}><p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="500+" /></p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Systems Installed</p>
               </div></TiltCard>
               <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
@@ -185,9 +186,9 @@ export default function ServicesPage() {
             Schedule a free consultation with our energy experts today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-200">
-            <Link href="/contact" className="btn-3d inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl hover:shadow-black/20 transition-all duration-200">
+            <Link href="/contact" className="group btn-3d inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl hover:shadow-black/20 transition-all duration-200">
               Book Consultation
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </Link>
             <Link href="/products" className="btn-3d inline-flex items-center gap-2 px-8 py-3 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white transition-all duration-200">
               View Products

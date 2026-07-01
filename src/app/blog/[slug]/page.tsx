@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { basePath } from "@/lib/basePath";
 import { articles, getArticleBySlug, getRelatedArticles, getAdjacentArticles } from "@/lib/blog";
 import { Breadcrumb } from "@/components/Breadcrumb";
 
@@ -231,9 +230,9 @@ export default async function BlogArticlePage({ params }: Props) {
           <p className="text-white/80 text-lg mb-10 max-w-2xl mx-auto">
             Subscribe to our newsletter for the latest insights on energy storage technology.
           </p>
-          <Link href="/blog" className="inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl transition-all duration-200">
+          <Link href="/blog" className="group inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl transition-all duration-200">
             Browse All Articles
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </Link>
         </div>
       </section>

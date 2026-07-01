@@ -50,6 +50,9 @@ export const metadata: Metadata = {
   referrer: "origin-when-cross-origin",
   creator: "Power2Go",
   publisher: "Power2Go",
+  alternates: {
+    canonical: "/",
+  },
   robots: {
     index: true,
     follow: true,
@@ -116,7 +119,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-sans antialiased overflow-x-hidden">
         <SkipToContent />
         <Header />
-        <main id="main-content" className="flex-1 pt-14">
+        <main id="main-content" className="flex-1 pt-16 md:pt-14">
           {children}
         </main>
         <Footer />

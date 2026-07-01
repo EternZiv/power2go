@@ -3,6 +3,9 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { basePath } from "@/lib/basePath";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { TiltCard } from "@/components/TiltCard";
+import { Floating3D } from "@/components/Floating3D";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
 
 export const metadata: Metadata = {
   title: "Terms of Service | Power2Go",
@@ -12,7 +15,7 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <>
-      <section className="relative overflow-hidden min-h-[60vh] flex items-center pt-14">
+      <section className="relative overflow-hidden min-h-[100dvh] flex items-center pt-14">
         <Image
           src={`${basePath}/images/10.png`}
           alt="Power2Go terms of service"
@@ -23,14 +26,35 @@ export default function TermsPage() {
           quality={85}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-[#0d1726]/90 via-[#0d1726]/70 to-[#1447E6]/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/40 via-transparent to-transparent pointer-events-none" />
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
           <Breadcrumb items={[{ label: "Terms of Service" }]} />
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in-left">Terms of Service</h1>
-            <p className="text-white/80 text-lg animate-fade-in-left delay-100">Last updated: June 2026</p>
-            <p className="text-white/60 text-sm mt-4 max-w-2xl animate-fade-in-left delay-200">
-              Please read these terms carefully before using our website or purchasing our products and services.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in-left">Terms of Service</h1>
+              <p className="text-white/80 text-lg animate-fade-in-left delay-100">Last updated: June 2026</p>
+              <p className="text-white/60 text-sm mt-4 max-w-2xl animate-fade-in-left delay-200">
+                Please read these terms carefully before using our website or purchasing our products and services.
+              </p>
+            </div>
+            <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300 perspective-1000">
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={2}><p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="10" /></p></Floating3D>
+                <p className="text-white/70 text-sm mt-1">Sections</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={2.5}><p className="text-3xl font-bold text-[#22c55e]">June 2026</p></Floating3D>
+                <p className="text-white/70 text-sm mt-1">Last Updated</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={3}><p className="text-3xl font-bold text-[#22c55e]">Pakistan</p></Floating3D>
+                <p className="text-white/70 text-sm mt-1">Governing Law</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={3.5}><p className="text-3xl font-bold text-[#22c55e]">24/7</p></Floating3D>
+                <p className="text-white/70 text-sm mt-1">Support</p>
+              </div></TiltCard>
+            </div>
           </div>
         </div>
       </section>
@@ -86,7 +110,7 @@ export default function TermsPage() {
 
             <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">7. Third-Party Links</h2>
             <p className="text-gray-600 leading-relaxed mb-5">
-              Our website may contain links to third-party websites. We are not responsible for the content, privacy practices, or terms of these external sites.
+              Our website may contain links to third-party websites. We are not responsible for the content, privacy practices, or terms of these external sites. Please review our <a href="/privacy" className="text-[#1447E6] hover:underline">Privacy Policy</a> and <a href="/cookies" className="text-[#1447E6] hover:underline">Cookie Policy</a> for information on how we handle your data.
             </p>
 
             <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">8. Changes to Terms</h2>

@@ -15,8 +15,7 @@ export function Floating3D({ children, className = "", amplitude = 6, speed = 3,
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const startY = 0;
-    let startTime = Date.now();
+    const startTime = Date.now();
     let raf: number;
 
     const animate = () => {

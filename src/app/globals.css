@@ -16,7 +16,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
 
 body {
   font-family: var(--font-inter, ui-sans-serif, system-ui, sans-serif);
@@ -49,9 +49,9 @@ body {
   }
 }
 
-.animate-fade-in-left  { animation: fadeInLeft 0.7s ease forwards; }
-.animate-fade-in-up    { animation: fadeInUp  0.7s ease forwards; }
-.animate-fade-in       { animation: fadeIn    0.7s ease forwards; }
+.animate-fade-in-left  { animation: fadeInLeft 0.6s cubic-bezier(0.21, 0.47, 0.32, 0.98) forwards; }
+.animate-fade-in-up    { animation: fadeInUp  0.6s cubic-bezier(0.21, 0.47, 0.32, 0.98) forwards; }
+.animate-fade-in       { animation: fadeIn    0.6s cubic-bezier(0.21, 0.47, 0.32, 0.98) forwards; }
 
 .delay-100 { animation-delay: 0.1s; }
 .delay-200 { animation-delay: 0.2s; }
@@ -74,22 +74,29 @@ body {
   font-size: 0.875rem;
   font-weight: 500;
   color: #374151;
-  transition: color 0.2s;
+  transition: color 0.2s cubic-bezier(0.21, 0.47, 0.32, 0.98),
+              background-color 0.2s cubic-bezier(0.21, 0.47, 0.32, 0.98);
+  border-radius: 0.5rem;
 }
 .nav-link::after {
   content: '';
   position: absolute;
-  bottom: -4px; left: 0; right: 0;
+  bottom: 0; left: 0.75rem; right: 0.75rem;
   height: 2px;
   background: var(--brand-blue);
   transform: scaleX(0);
-  transition: transform 0.25s ease;
+  transition: transform 0.3s cubic-bezier(0.21, 0.47, 0.32, 0.98);
   transform-origin: left;
 }
-.nav-link:hover { color: var(--brand-blue); }
+.nav-link:hover { color: var(--brand-blue); background-color: rgba(20,71,230,0.04); }
 .nav-link:hover::after { transform: scaleX(1); }
 .nav-link.active { color: var(--brand-blue); }
 .nav-link.active::after { transform: scaleX(1); }
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--brand-blue);
+  outline-offset: 2px;
+}
 
 .btn-primary {
   display: inline-flex;
@@ -114,6 +121,10 @@ body {
 .btn-primary:active {
   transform: translateY(0) scale(0.98);
 }
+.btn-primary:focus-visible {
+  outline: 2px solid var(--brand-blue);
+  outline-offset: 2px;
+}
 
 .btn-outline {
   display: inline-flex;
@@ -133,6 +144,10 @@ body {
   background: rgba(255,255,255,0.15);
   border-color: #fff;
   transform: translateY(-1px);
+}
+.btn-outline:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
 }
 
 .product-card {
@@ -155,12 +170,6 @@ body {
   border: 1px solid #f1f5f9;
   border-radius: 1rem;
   padding: 1.5rem;
-  transition: all 0.3s cubic-bezier(0.21, 0.47, 0.32, 0.98);
-}
-.feature-card:hover {
-  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
-  border-color: #e2e8f0;
-  transform: translateY(-3px);
 }
 
 .sol-card {
@@ -168,26 +177,6 @@ body {
   padding: 1.5rem;
   border: 2px solid transparent;
   background: #fff;
-  transition: all 0.3s cubic-bezier(0.21, 0.47, 0.32, 0.98);
-  position: relative;
-  overflow: hidden;
-}
-.sol-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #1447E6, #01b0d9);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s cubic-bezier(0.21, 0.47, 0.32, 0.98);
-}
-.sol-card:hover {
-  border-color: #bfdbfe;
-  box-shadow: 0 12px 40px rgba(20,71,230,0.12);
-}
-.sol-card:hover::before {
-  transform: scaleX(1);
 }
 
 .timeline-dot {
@@ -223,6 +212,9 @@ body {
 .form-input:focus {
   border-color: var(--brand-blue);
   box-shadow: 0 0 0 3px rgba(20,71,230,0.1);
+}
+.form-input:focus-visible {
+  outline: none;
 }
 .form-input::placeholder { color: #94a3b8; }
 

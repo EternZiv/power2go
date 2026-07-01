@@ -8,6 +8,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { TiltCard } from "@/components/TiltCard";
 import { Floating3D } from "@/components/Floating3D";
 import { ScrollReveal3D } from "@/components/ScrollReveal3D";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
 
 const categoryColors: Record<string, string> = {
   Technology: "bg-blue-600",
@@ -63,11 +64,11 @@ export default function BlogPage() {
             </div>
             <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300 perspective-1000">
               <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={2}><p className="text-3xl font-bold text-[#22c55e]">6</p></Floating3D>
+                <Floating3D amplitude={3} speed={2}><p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="6" /></p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Articles Published</p>
               </div></TiltCard>
               <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={2.5}><p className="text-3xl font-bold text-[#22c55e]">4</p></Floating3D>
+                <Floating3D amplitude={3} speed={2.5}><p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="4" /></p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Topic Categories</p>
               </div></TiltCard>
               <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">

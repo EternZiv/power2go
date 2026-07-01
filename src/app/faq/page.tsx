@@ -6,6 +6,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { TiltCard } from "@/components/TiltCard";
 import { Floating3D } from "@/components/Floating3D";
 import { ScrollReveal3D } from "@/components/ScrollReveal3D";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
 
 const faqs = [
   {
@@ -41,6 +42,14 @@ const faqs = [
       { q: "Does Power2Go provide installation services?", a: "Yes. Our certified engineering teams handle professional deployment and commissioning of all Power2Go systems. We provide full installation, testing, and handover documentation." },
       { q: "What after-sales support is available?", a: "Power2Go provides comprehensive after-sales support including 24/7 remote monitoring, predictive maintenance analytics, firmware updates, on-site service visits, and a dedicated priority support hotline at 111-P2G-247." },
       { q: "How can I request a consultation or quotation?", a: "You can contact our sales team through the contact form on our website, call us at 111-P2G-247, or email us at info@power2go.com.pk. We will arrange a free energy assessment and provide a customized solution design." },
+    ],
+  },
+  {
+    category: "Legal & Policies",
+    items: [
+      { q: "Where can I find Power2Go's Privacy Policy?", a: "You can view our complete Privacy Policy at our <a href=\"/privacy\" class=\"text-[#1447E6] hover:underline\">Privacy Policy page</a>. It explains how we collect, use, and protect your personal information." },
+      { q: "What are Power2Go's Terms of Service?", a: "Our <a href=\"/terms\" class=\"text-[#1447E6] hover:underline\">Terms of Service</a> are available on our website. They govern your use of our website and services." },
+      { q: "How does Power2Go use cookies?", a: "We use cookies to enhance your browsing experience. Full details are in our <a href=\"/cookies\" class=\"text-[#1447E6] hover:underline\">Cookie Policy</a>, including how to manage your preferences." },
     ],
   },
 ];
@@ -94,11 +103,11 @@ export default function FAQPage() {
             </div>
             <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300 perspective-1000">
               <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={2}><p className="text-3xl font-bold text-[#22c55e]">14</p></Floating3D>
+                <Floating3D amplitude={3} speed={2}><p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="14" /></p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Answered Questions</p>
               </div></TiltCard>
               <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={2.5}><p className="text-3xl font-bold text-[#22c55e]">4</p></Floating3D>
+                <Floating3D amplitude={3} speed={2.5}><p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="4" /></p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Topic Categories</p>
               </div></TiltCard>
               <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
@@ -151,7 +160,7 @@ export default function FAQPage() {
                   </button>
                   {isOpen && (
                     <div className="px-6 pb-4">
-                      <p className="text-gray-600 leading-relaxed text-sm">{faq.a}</p>
+                      <p className="text-gray-600 leading-relaxed text-sm" dangerouslySetInnerHTML={{ __html: faq.a }} />
                     </div>
                   )}
                 </div>
@@ -170,9 +179,9 @@ export default function FAQPage() {
             Our team is ready to help you find the right energy solution.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-200">
-            <a href="tel:111-P2G-247" className="btn-3d inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl transition-all duration-200">
+            <a href="tel:111-P2G-247" className="group btn-3d inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl transition-all duration-200">
               Call 111-P2G-247
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
             <a href="mailto:info@power2go.com.pk" className="btn-3d inline-flex items-center gap-2 px-8 py-3 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white transition-all duration-200">
               Email Us

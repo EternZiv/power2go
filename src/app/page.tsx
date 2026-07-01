@@ -3,11 +3,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { basePath } from "@/lib/basePath";
 import { ProductCardGrid } from "@/components/ProductCardGrid";
+import { FocusCards } from "@/components/FocusCards";
 import { Testimonials } from "@/components/Testimonials";
 import { Newsletter } from "@/components/Newsletter";
 import { TiltCard } from "@/components/TiltCard";
 import { Floating3D } from "@/components/Floating3D";
 import { ScrollReveal3D } from "@/components/ScrollReveal3D";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
 
 const solutions = [
   {
@@ -200,7 +202,7 @@ export default function HomePage() {
                 <TiltCard tiltDegree={5} glare={false}>
                   <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
                     <Floating3D amplitude={3} speed={2}>
-                    <p className="text-3xl font-bold text-[#22c55e]">15+</p>
+                    <p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="15+" /></p>
                     </Floating3D>
                     <p className="text-white/70 text-sm mt-1">Years Experience</p>
                   </div>
@@ -208,7 +210,7 @@ export default function HomePage() {
                 <TiltCard tiltDegree={5} glare={false}>
                   <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
                     <Floating3D amplitude={3} speed={2.5}>
-                    <p className="text-3xl font-bold text-[#22c55e]">500+</p>
+                    <p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="500+" /></p>
                     </Floating3D>
                     <p className="text-white/70 text-sm mt-1">Systems Deployed</p>
                   </div>
@@ -216,7 +218,7 @@ export default function HomePage() {
                 <TiltCard tiltDegree={5} glare={false}>
                   <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
                     <Floating3D amplitude={3} speed={3}>
-                    <p className="text-3xl font-bold text-[#22c55e]">50MW+</p>
+                    <p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="50MW+" /></p>
                     </Floating3D>
                     <p className="text-white/70 text-sm mt-1">Installed Capacity</p>
                   </div>
@@ -224,7 +226,7 @@ export default function HomePage() {
                 <TiltCard tiltDegree={5} glare={false}>
                   <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
                     <Floating3D amplitude={3} speed={3.5}>
-                    <p className="text-3xl font-bold text-[#22c55e]">98%</p>
+                    <p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="98%" /></p>
                     </Floating3D>
                     <p className="text-white/70 text-sm mt-1">Client Satisfaction</p>
                   </div>
@@ -244,36 +246,23 @@ export default function HomePage() {
               Choose from our comprehensive range of battery storage systems designed to meet your specific energy needs
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {solutions.map((sol, i) => (
-              <Link
-                key={i}
-                href={sol.href}
-                className="sol-card group"
-                aria-label={`Learn more about ${sol.title} solutions`}
-              >
-                <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-6 ${sol.bg} transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg`}>
-                  {sol.icon}
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2 tracking-tight">{sol.title}</h3>
-                <p className="text-slate-500 text-sm leading-6">{sol.desc}</p>
-                <div className="mt-4 flex items-center gap-1 text-[#1447E6] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  Learn more
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <FocusCards items={solutions} />
         </div>
       </section>
 
-      <section className="bg-[#0d1726] py-12 relative overflow-hidden">
+      <section className="bg-[#0d1726] py-14 relative overflow-hidden">
         <div className="gradient-line absolute top-0 inset-x-0" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {stats.map((s, i) => (
               <div key={i} className="py-4 animate-fade-in-up" style={{ animationDelay: `${i * 0.15}s` }}>
-                <p className="text-2xl md:text-3xl font-extrabold text-[#22c55e]">{s.value}</p>
+                <p className="text-2xl md:text-3xl font-extrabold text-[#22c55e]">
+                  {"99.9%" === s.value || "5 Years" === s.value ? (
+                    s.value
+                  ) : (
+                    <AnimatedCounter value={s.value} />
+                  )}
+                </p>
                 <p className="text-white/60 text-sm mt-1 font-medium">{s.label}</p>
               </div>
             ))}
@@ -293,10 +282,10 @@ export default function HomePage() {
           <div className="text-center animate-fade-in-up">
             <Link
               href="/products"
-              className="inline-flex items-center gap-2 px-8 py-2.5 border border-gray-300 text-gray-700 font-semibold rounded-xl hover:shadow-lg hover:shadow-gray-200 transition-all duration-300 group"
+              className="inline-flex items-center gap-2 px-8 py-3 border border-gray-300 text-gray-700 font-semibold rounded-xl hover:border-[#1447E6] hover:text-[#1447E6] hover:shadow-lg hover:shadow-blue-100 transition-all duration-300 group"
             >
               Browse All Products
-              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
+              <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </Link>
@@ -345,12 +334,12 @@ export default function HomePage() {
             Explore our range of energy storage solutions or speak with our sales team today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-200">
-              <Link href="/products" className="btn-3d inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl hover:shadow-black/20 transition-all duration-200">
+              <Link href="/products" className="group btn-3d inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl hover:shadow-black/20 transition-all duration-200">
                 View Products
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </Link>
-              <Link href="/contact" className="btn-3d inline-flex items-center gap-2 px-8 py-3 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white transition-all duration-200">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
+              <Link href="/contact" className="group btn-3d inline-flex items-center gap-2 px-8 py-3 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white transition-all duration-200">
+              <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
               Call Us Now
             </Link>
           </div>

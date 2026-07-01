@@ -7,6 +7,8 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { TiltCard } from "@/components/TiltCard";
 import { Floating3D } from "@/components/Floating3D";
 import { ScrollReveal3D } from "@/components/ScrollReveal3D";
+import { FocusCards } from "@/components/FocusCards";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -76,19 +78,19 @@ export default function AboutPage() {
             </div>
             <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300 perspective-1000">
               <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={2}><p className="text-3xl font-bold text-[#22c55e]">4</p></Floating3D>
+                <Floating3D amplitude={3} speed={2}><p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="4" /></p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Office Locations</p>
               </div></TiltCard>
               <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={2.5}><p className="text-3xl font-bold text-[#22c55e]">50+</p></Floating3D>
+                <Floating3D amplitude={3} speed={2.5}><p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="50+" /></p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Team Members</p>
               </div></TiltCard>
               <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={3}><p className="text-3xl font-bold text-[#22c55e]">3</p></Floating3D>
+                <Floating3D amplitude={3} speed={3}><p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="3" /></p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Parent Companies</p>
               </div></TiltCard>
               <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={3.5}><p className="text-3xl font-bold text-[#22c55e]">100%</p></Floating3D>
+                <Floating3D amplitude={3} speed={3.5}><p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="100%" /></p></Floating3D>
                 <p className="text-white/70 text-sm mt-1">Local Support</p>
               </div></TiltCard>
             </div>
@@ -134,13 +136,18 @@ export default function AboutPage() {
       </section>
 
       <section className="bg-[#0d1726] py-14 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMSIvPjwvZz48L2c+PC9zdmc+')] opacity-40" />
         <div className="gradient-line absolute top-0 inset-x-0" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {stats.map((s, i) => (
               <div key={i} className="py-4 animate-fade-in-up" style={{ animationDelay: `${i * 0.15}s` }}>
-                <p className="text-2xl md:text-3xl font-extrabold text-[#22c55e]">{s.value}</p>
+                <p className="text-2xl md:text-3xl font-extrabold text-[#22c55e]">
+                  {"99.9%" === s.value || "5 Years" === s.value ? (
+                    s.value
+                  ) : (
+                    <AnimatedCounter value={s.value} />
+                  )}
+                </p>
                 <p className="text-white font-semibold text-sm mt-1">{s.label}</p>
                 <p className="text-white/50 text-xs mt-0.5">{s.sub}</p>
               </div>
@@ -156,17 +163,11 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-3">Our Core Values</h2>
             <p className="text-gray-500 text-lg">The principles that guide everything we do</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 perspective-1000">
-            {coreValues.map((v, i) => (
-              <TiltCard key={i} tiltDegree={5} glare={false}>
-              <div className="feature-card text-center group animate-fade-in-up" style={{ animationDelay: `${i * 0.1}s` }}>
-                <div className="text-4xl mb-4 transition-transform duration-300 group-hover:scale-110">{v.icon}</div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#1447E6] transition-colors">{v.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{v.desc}</p>
-              </div>
-              </TiltCard>
-            ))}
-          </div>
+          <FocusCards
+            items={coreValues}
+            gridClass="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+            cardClass="sol-card text-center"
+          />
         </div>
       </section>
 
@@ -244,9 +245,9 @@ export default function AboutPage() {
             Discover how Power2Go is leading the transition to clean, reliable energy across Pakistan.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-200">
-            <Link href="/contact" className="btn-3d inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl hover:shadow-black/20 transition-all duration-200">
+            <Link href="/contact" className="group btn-3d inline-flex items-center gap-2 px-8 py-3 bg-white text-[#1447E6] font-semibold rounded-xl hover:bg-gray-100 hover:shadow-xl hover:shadow-black/20 transition-all duration-200">
               Stay Updated
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </Link>
             <Link href="/contact" className="btn-3d inline-flex items-center gap-2 px-8 py-3 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white transition-all duration-200">
               Get in Touch

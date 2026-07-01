@@ -45,7 +45,7 @@ const productLinks = [
 const supportLinks = [
   { label: "Documentation", href: "/contact" },
   { label: "Installation Guidance", href: "/contact" },
-  { label: "FAQs", href: "/contact" },
+  { label: "FAQs", href: "/faq" },
   { label: "Warranty", href: "/contact" },
   { label: "Contact Support", href: "/contact" },
 ];
@@ -166,9 +166,9 @@ export function Footer() {
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-white/40 text-sm">&copy; {new Date().getFullYear()} Power2Go. All rights reserved.</p>
           <div className="flex flex-wrap justify-center gap-6">
-            <Link href="/contact" className="text-white/50 text-sm hover:text-white/80 transition-colors duration-200">Privacy Policy</Link>
-            <Link href="/contact" className="text-white/50 text-sm hover:text-white/80 transition-colors duration-200">Terms of Service</Link>
-            <Link href="/contact" className="text-white/50 text-sm hover:text-white/80 transition-colors duration-200">Cookie Policy</Link>
+            <Link href="/privacy" className="text-white/50 text-sm hover:text-white/80 transition-colors duration-200">Privacy Policy</Link>
+            <Link href="/terms" className="text-white/50 text-sm hover:text-white/80 transition-colors duration-200">Terms of Service</Link>
+            <Link href="/cookies" className="text-white/50 text-sm hover:text-white/80 transition-colors duration-200">Cookie Policy</Link>
           </div>
         </div>
       </div>

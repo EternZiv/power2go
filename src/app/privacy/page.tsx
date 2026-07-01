@@ -3,6 +3,9 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { basePath } from "@/lib/basePath";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { TiltCard } from "@/components/TiltCard";
+import { Floating3D } from "@/components/Floating3D";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Power2Go",
@@ -12,7 +15,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <>
-      <section className="relative overflow-hidden min-h-[60vh] flex items-center pt-14">
+      <section className="relative overflow-hidden min-h-[100dvh] flex items-center pt-14">
         <Image
           src={`${basePath}/images/9.png`}
           alt="Power2Go privacy policy"
@@ -23,14 +26,35 @@ export default function PrivacyPage() {
           quality={85}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-[#0d1726]/90 via-[#0d1726]/70 to-[#1447E6]/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1726]/40 via-transparent to-transparent pointer-events-none" />
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
           <Breadcrumb items={[{ label: "Privacy Policy" }]} />
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in-left">Privacy Policy</h1>
-            <p className="text-white/80 text-lg animate-fade-in-left delay-100">Last updated: June 2026</p>
-            <p className="text-white/60 text-sm mt-4 max-w-2xl animate-fade-in-left delay-200">
-              We are committed to protecting your personal information and being transparent about how we collect, use, and safeguard your data.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in-left">Privacy Policy</h1>
+              <p className="text-white/80 text-lg animate-fade-in-left delay-100">Last updated: June 2026</p>
+              <p className="text-white/60 text-sm mt-4 max-w-2xl animate-fade-in-left delay-200">
+                We are committed to protecting your personal information and being transparent about how we collect, use, and safeguard your data.
+              </p>
+            </div>
+            <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300 perspective-1000">
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={2}><p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="3" /></p></Floating3D>
+                <p className="text-white/70 text-sm mt-1">Policies Covered</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={2.5}><p className="text-3xl font-bold text-[#22c55e]">June 2026</p></Floating3D>
+                <p className="text-white/70 text-sm mt-1">Last Updated</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={3}><p className="text-3xl font-bold text-[#22c55e]">GDPR</p></Floating3D>
+                <p className="text-white/70 text-sm mt-1">Compliant</p>
+              </div></TiltCard>
+              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                <Floating3D amplitude={3} speed={3.5}><p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="100%" /></p></Floating3D>
+                <p className="text-white/70 text-sm mt-1">Transparent</p>
+              </div></TiltCard>
+            </div>
           </div>
         </div>
       </section>
@@ -40,7 +64,7 @@ export default function PrivacyPage() {
           <div className="prose prose-gray max-w-none">
             <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">1. Introduction</h2>
             <p className="text-gray-600 leading-relaxed mb-5">
-              Power2Go ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.
+              Power2Go (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.
             </p>
 
             <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">2. Information We Collect</h2>
@@ -127,7 +151,12 @@ export default function PrivacyPage() {
               </li>
             </ul>
 
-            <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">8. Contact Us</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">8. Related Policies</h2>
+            <p className="text-gray-600 leading-relaxed mb-5">
+              Please also review our <a href="/terms" className="text-[#1447E6] hover:underline">Terms of Service</a> for information about the terms governing your use of our website.
+            </p>
+
+            <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">9. Contact Us</h2>
             <p className="text-gray-600 leading-relaxed mb-5">
               If you have questions about this Privacy Policy, please contact us at:
             </p>
