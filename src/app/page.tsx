@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { basePath } from "@/lib/basePath";
 import { ProductCardGrid } from "@/components/ProductCardGrid";
+import { StatsCards } from "@/components/StatsCards";
 import { FocusCards } from "@/components/FocusCards";
 import { Testimonials } from "@/components/Testimonials";
 import { Newsletter } from "@/components/Newsletter";
@@ -250,25 +251,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-[#0d1726] py-14 relative overflow-hidden">
-        <div className="gradient-line absolute top-0 inset-x-0" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {stats.map((s, i) => (
-              <div key={i} className="py-4 animate-fade-in-up" style={{ animationDelay: `${i * 0.15}s` }}>
-                <p className="text-2xl md:text-3xl font-extrabold text-[#22c55e]">
-                  {"99.9%" === s.value || "5 Years" === s.value ? (
-                    s.value
-                  ) : (
-                    <AnimatedCounter value={s.value} />
-                  )}
-                </p>
-                <p className="text-white/60 text-sm mt-1 font-medium">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <StatsCards stats={stats} />
 
       <section className="py-24 bg-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
