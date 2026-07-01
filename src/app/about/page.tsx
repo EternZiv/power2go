@@ -9,6 +9,9 @@ import { Floating3D } from "@/components/Floating3D";
 import { ScrollReveal3D } from "@/components/ScrollReveal3D";
 import { FocusCards } from "@/components/FocusCards";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
+import { AnimatedStatsSection } from "@/components/AnimatedStatsSection";
+import { AnimatedStatCard } from "@/components/AnimatedStatCard";
+import { StatValue } from "@/components/StatValue";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -76,24 +79,32 @@ export default function AboutPage() {
                 </div>
               </div>
             </div>
-            <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300 perspective-1000">
-              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={2}><p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="4" /></p></Floating3D>
-                <p className="text-white/70 text-sm mt-1">Office Locations</p>
-              </div></TiltCard>
-              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={2.5}><p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="50+" /></p></Floating3D>
-                <p className="text-white/70 text-sm mt-1">Team Members</p>
-              </div></TiltCard>
-              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={3}><p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="3" /></p></Floating3D>
-                <p className="text-white/70 text-sm mt-1">Parent Companies</p>
-              </div></TiltCard>
-              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={3.5}><p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="100%" /></p></Floating3D>
-                <p className="text-white/70 text-sm mt-1">Local Support</p>
-              </div></TiltCard>
-            </div>
+            <AnimatedStatsSection className="hidden lg:grid grid-cols-2 gap-4 perspective-1000">
+              <AnimatedStatCard index={0}>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                  <StatValue value="4" className="text-3xl font-bold text-[#22c55e]" as="p" />
+                  <p className="text-white/70 text-sm mt-1">Office Locations</p>
+                </div>
+              </AnimatedStatCard>
+              <AnimatedStatCard index={1}>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                  <StatValue value="50+" className="text-3xl font-bold text-[#22c55e]" as="p" />
+                  <p className="text-white/70 text-sm mt-1">Team Members</p>
+                </div>
+              </AnimatedStatCard>
+              <AnimatedStatCard index={2}>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                  <StatValue value="3" className="text-3xl font-bold text-[#22c55e]" as="p" />
+                  <p className="text-white/70 text-sm mt-1">Parent Companies</p>
+                </div>
+              </AnimatedStatCard>
+              <AnimatedStatCard index={3}>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                  <StatValue value="100%" className="text-3xl font-bold text-[#22c55e]" as="p" />
+                  <p className="text-white/70 text-sm mt-1">Local Support</p>
+                </div>
+              </AnimatedStatCard>
+            </AnimatedStatsSection>
           </div>
         </div>
       </section>
@@ -135,26 +146,20 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-[#0d1726] py-14 relative overflow-hidden">
+      <AnimatedStatsSection className="bg-[#0d1726] py-14 relative overflow-hidden">
         <div className="gradient-line absolute top-0 inset-x-0" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {stats.map((s, i) => (
-              <div key={i} className="py-4 animate-fade-in-up" style={{ animationDelay: `${i * 0.15}s` }}>
-                <p className="text-2xl md:text-3xl font-extrabold text-[#22c55e]">
-                  {"99.9%" === s.value || "5 Years" === s.value ? (
-                    s.value
-                  ) : (
-                    <AnimatedCounter value={s.value} />
-                  )}
-                </p>
+              <AnimatedStatCard key={i} index={i} className="py-4">
+                <StatValue value={s.value} className="text-2xl md:text-3xl font-extrabold text-[#22c55e]" as="p" />
                 <p className="text-white font-semibold text-sm mt-1">{s.label}</p>
                 <p className="text-white/50 text-xs mt-0.5">{s.sub}</p>
-              </div>
+              </AnimatedStatCard>
             ))}
           </div>
         </div>
-      </section>
+      </AnimatedStatsSection>
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

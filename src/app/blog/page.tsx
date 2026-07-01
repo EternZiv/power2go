@@ -6,9 +6,10 @@ import { basePath } from "@/lib/basePath";
 import { articles } from "@/lib/blog";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { TiltCard } from "@/components/TiltCard";
-import { Floating3D } from "@/components/Floating3D";
 import { ScrollReveal3D } from "@/components/ScrollReveal3D";
-import { AnimatedCounter } from "@/components/AnimatedCounter";
+import { AnimatedStatsSection } from "@/components/AnimatedStatsSection";
+import { AnimatedStatCard } from "@/components/AnimatedStatCard";
+import { StatValue } from "@/components/StatValue";
 
 const categoryColors: Record<string, string> = {
   Technology: "bg-blue-600",
@@ -62,24 +63,32 @@ export default function BlogPage() {
                 </div>
               </div>
             </div>
-            <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300 perspective-1000">
-              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={2}><p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="6" /></p></Floating3D>
-                <p className="text-white/70 text-sm mt-1">Articles Published</p>
-              </div></TiltCard>
-              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={2.5}><p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="4" /></p></Floating3D>
-                <p className="text-white/70 text-sm mt-1">Topic Categories</p>
-              </div></TiltCard>
-              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={3}><p className="text-3xl font-bold text-[#22c55e]">Monthly</p></Floating3D>
-                <p className="text-white/70 text-sm mt-1">New Articles</p>
-              </div></TiltCard>
-              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={3.5}><p className="text-3xl font-bold text-[#22c55e]">Free</p></Floating3D>
-                <p className="text-white/70 text-sm mt-1">Resource Library</p>
-              </div></TiltCard>
-            </div>
+            <AnimatedStatsSection className="hidden lg:grid grid-cols-2 gap-4 perspective-1000">
+              <AnimatedStatCard index={0}>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                  <StatValue value="6" className="text-3xl font-bold text-[#22c55e]" as="p" />
+                  <p className="text-white/70 text-sm mt-1">Articles Published</p>
+                </div>
+              </AnimatedStatCard>
+              <AnimatedStatCard index={1}>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                  <StatValue value="4" className="text-3xl font-bold text-[#22c55e]" as="p" />
+                  <p className="text-white/70 text-sm mt-1">Topic Categories</p>
+                </div>
+              </AnimatedStatCard>
+              <AnimatedStatCard index={2}>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                  <p className="text-3xl font-bold text-[#22c55e]">Monthly</p>
+                  <p className="text-white/70 text-sm mt-1">New Articles</p>
+                </div>
+              </AnimatedStatCard>
+              <AnimatedStatCard index={3}>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                  <p className="text-3xl font-bold text-[#22c55e]">Free</p>
+                  <p className="text-white/70 text-sm mt-1">Resource Library</p>
+                </div>
+              </AnimatedStatCard>
+            </AnimatedStatsSection>
           </div>
         </div>
       </section>

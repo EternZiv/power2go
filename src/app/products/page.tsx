@@ -6,9 +6,9 @@ import { basePath } from "@/lib/basePath";
 import { products } from "@/lib/products";
 import { ProductCardGrid } from "@/components/ProductCardGrid";
 import { Breadcrumb } from "@/components/Breadcrumb";
-import { TiltCard } from "@/components/TiltCard";
-import { Floating3D } from "@/components/Floating3D";
-import { AnimatedCounter } from "@/components/AnimatedCounter";
+import { AnimatedStatsSection } from "@/components/AnimatedStatsSection";
+import { AnimatedStatCard } from "@/components/AnimatedStatCard";
+import { StatValue } from "@/components/StatValue";
 
 const categories = ["All", "Residential", "Commercial", "Industrial", "Portable", "Monitoring"];
 
@@ -59,24 +59,32 @@ export default function ProductsPage() {
                 </div>
               </div>
             </div>
-            <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300 perspective-1000">
-              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={2}><p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="6" /></p></Floating3D>
-                <p className="text-white/70 text-sm mt-1">Product Models</p>
-              </div></TiltCard>
-              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={2.5}><p className="text-3xl font-bold text-[#22c55e]">5Wh-150kWh</p></Floating3D>
-                <p className="text-white/70 text-sm mt-1">Capacity Range</p>
-              </div></TiltCard>
-              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={3}><p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="98%" /></p></Floating3D>
-                <p className="text-white/70 text-sm mt-1">Round-Trip Efficiency</p>
-              </div></TiltCard>
-              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={3.5}><p className="text-3xl font-bold text-[#22c55e]">CE, UL</p></Floating3D>
-                <p className="text-white/70 text-sm mt-1">Certified</p>
-              </div></TiltCard>
-            </div>
+            <AnimatedStatsSection className="hidden lg:grid grid-cols-2 gap-4 perspective-1000">
+              <AnimatedStatCard index={0}>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                  <StatValue value="6" className="text-3xl font-bold text-[#22c55e]" as="p" />
+                  <p className="text-white/70 text-sm mt-1">Product Models</p>
+                </div>
+              </AnimatedStatCard>
+              <AnimatedStatCard index={1}>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                  <p className="text-3xl font-bold text-[#22c55e]">5Wh-150kWh</p>
+                  <p className="text-white/70 text-sm mt-1">Capacity Range</p>
+                </div>
+              </AnimatedStatCard>
+              <AnimatedStatCard index={2}>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                  <StatValue value="98%" className="text-3xl font-bold text-[#22c55e]" as="p" />
+                  <p className="text-white/70 text-sm mt-1">Round-Trip Efficiency</p>
+                </div>
+              </AnimatedStatCard>
+              <AnimatedStatCard index={3}>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                  <p className="text-3xl font-bold text-[#22c55e]">CE, UL</p>
+                  <p className="text-white/70 text-sm mt-1">Certified</p>
+                </div>
+              </AnimatedStatCard>
+            </AnimatedStatsSection>
           </div>
         </div>
       </section>

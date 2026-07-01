@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef, useCallback, useSyncExternalStore } from "react";
 
 interface Testimonial {
   quote: string;
@@ -41,12 +41,77 @@ const companyLogos = [
   { name: "Pakistan Solar", className: "text-white/30" },
 ];
 
+function useMediaQuery(query: string): boolean {
+  return useSyncExternalStore(
+    (cb) => {
+      const mq = window.matchMedia(query);
+      mq.addEventListener("change", cb);
+      return () => mq.removeEventListener("change", cb);
+    },
+    () => window.matchMedia(query).matches,
+    () => false,
+  );
+}
+
 interface TestimonialsProps {
   className?: string;
 }
 
 export function Testimonials({ className = "" }: TestimonialsProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [animState, setAnimState] = useState<'idle' | 'fadeOut' | 'fadeIn'>('idle');
+  const [paused, setPaused] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef(0);
+
+  const reducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
+
+  const goTo = useCallback((index: number) => {
+    if (reducedMotion) {
+      setActiveIndex(index);
+      return;
+    }
+    if (animState !== 'idle') return;
+    setAnimState('fadeOut');
+    setTimeout(() => {
+      setActiveIndex(index);
+      setAnimState('fadeIn');
+      setTimeout(() => {
+        setAnimState('idle');
+      }, 400);
+    }, 300);
+  }, [animState, reducedMotion]);
+
+  const goToNext = useCallback(() => {
+    goTo((activeIndex + 1) % testimonials.length);
+  }, [activeIndex, goTo]);
+
+  const goToPrev = useCallback(() => {
+    goTo((activeIndex - 1 + testimonials.length) % testimonials.length);
+  }, [activeIndex, goTo]);
+
+  useEffect(() => {
+    if (reducedMotion || paused || animState !== 'idle') return;
+    const id = setTimeout(goToNext, 2000);
+    return () => clearTimeout(id);
+  }, [activeIndex, reducedMotion, paused, animState, goToNext]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) goToNext();
+      else goToPrev();
+    }
+  };
+
+  const isIdle = animState === 'idle';
+  const isFadeOut = animState === 'fadeOut';
+  const isFadeIn = animState === 'fadeIn';
+
   const current = testimonials[activeIndex];
 
   return (
@@ -64,8 +129,27 @@ export function Testimonials({ className = "" }: TestimonialsProps) {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12 animate-fade-in-up">
+        <div
+          className="max-w-4xl mx-auto"
+          ref={containerRef}
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div
+            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12"
+            style={{
+              opacity: isIdle ? 1 : isFadeOut ? 0 : 1,
+              transform: isFadeOut ? 'translateZ(0) scale(0.96)' : 'translateZ(0) scale(1)',
+              transition: isFadeOut
+                ? 'opacity 300ms, transform 300ms'
+                : isFadeIn
+                  ? 'opacity 400ms cubic-bezier(0.22, 1, 0.36, 1), transform 400ms cubic-bezier(0.22, 1, 0.36, 1)'
+                  : 'none',
+              willChange: 'transform, opacity',
+            }}
+          >
             <div className="flex items-center gap-1 mb-6">
               {Array.from({ length: current.rating }).map((_, i) => (
                 <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -91,7 +175,11 @@ export function Testimonials({ className = "" }: TestimonialsProps) {
             {testimonials.map((_, i) => (
               <button
                 key={i}
-                onClick={() => setActiveIndex(i)}
+                onClick={() => {
+                  if (i === activeIndex) return;
+                  if (reducedMotion) setActiveIndex(i);
+                  else goTo(i);
+                }}
                 className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
                   i === activeIndex ? "bg-white w-8" : "bg-white/30 hover:bg-white/50"
                 }`}

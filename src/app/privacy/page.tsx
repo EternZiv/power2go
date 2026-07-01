@@ -3,9 +3,9 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { basePath } from "@/lib/basePath";
 import { Breadcrumb } from "@/components/Breadcrumb";
-import { TiltCard } from "@/components/TiltCard";
-import { Floating3D } from "@/components/Floating3D";
-import { AnimatedCounter } from "@/components/AnimatedCounter";
+import { AnimatedStatsSection } from "@/components/AnimatedStatsSection";
+import { AnimatedStatCard } from "@/components/AnimatedStatCard";
+import { StatValue } from "@/components/StatValue";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Power2Go",
@@ -37,24 +37,32 @@ export default function PrivacyPage() {
                 We are committed to protecting your personal information and being transparent about how we collect, use, and safeguard your data.
               </p>
             </div>
-            <div className="hidden lg:grid grid-cols-2 gap-4 animate-fade-in-right delay-300 perspective-1000">
-              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={2}><p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="3" /></p></Floating3D>
-                <p className="text-white/70 text-sm mt-1">Policies Covered</p>
-              </div></TiltCard>
-              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={2.5}><p className="text-3xl font-bold text-[#22c55e]">June 2026</p></Floating3D>
-                <p className="text-white/70 text-sm mt-1">Last Updated</p>
-              </div></TiltCard>
-              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={3}><p className="text-3xl font-bold text-[#22c55e]">GDPR</p></Floating3D>
-                <p className="text-white/70 text-sm mt-1">Compliant</p>
-              </div></TiltCard>
-              <TiltCard tiltDegree={5} glare={false}><div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <Floating3D amplitude={3} speed={3.5}><p className="text-3xl font-bold text-[#22c55e]"><AnimatedCounter value="100%" /></p></Floating3D>
-                <p className="text-white/70 text-sm mt-1">Transparent</p>
-              </div></TiltCard>
-            </div>
+            <AnimatedStatsSection className="hidden lg:grid grid-cols-2 gap-4 perspective-1000">
+              <AnimatedStatCard index={0}>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                  <StatValue value="3" className="text-3xl font-bold text-[#22c55e]" as="p" />
+                  <p className="text-white/70 text-sm mt-1">Policies Covered</p>
+                </div>
+              </AnimatedStatCard>
+              <AnimatedStatCard index={1}>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                  <p className="text-3xl font-bold text-[#22c55e]">June 2026</p>
+                  <p className="text-white/70 text-sm mt-1">Last Updated</p>
+                </div>
+              </AnimatedStatCard>
+              <AnimatedStatCard index={2}>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                  <p className="text-3xl font-bold text-[#22c55e]">GDPR</p>
+                  <p className="text-white/70 text-sm mt-1">Compliant</p>
+                </div>
+              </AnimatedStatCard>
+              <AnimatedStatCard index={3}>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
+                  <StatValue value="100%" className="text-3xl font-bold text-[#22c55e]" as="p" />
+                  <p className="text-white/70 text-sm mt-1">Transparent</p>
+                </div>
+              </AnimatedStatCard>
+            </AnimatedStatsSection>
           </div>
         </div>
       </section>
