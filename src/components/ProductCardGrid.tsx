@@ -54,7 +54,7 @@ export function ProductCardGrid({ products, columns = 4 }: ProductCardGridProps)
                   e.stopPropagation();
                   setQuickViewProduct(p);
                 }}
-                className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white hover:scale-110"
+                className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm shadow-md flex items-center justify-center transition-all duration-300 hover:bg-white hover:scale-110"
                 aria-label={`Quick view ${p.name}`}
               >
                 <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
